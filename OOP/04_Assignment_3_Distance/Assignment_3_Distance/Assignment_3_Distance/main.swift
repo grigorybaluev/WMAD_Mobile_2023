@@ -2,25 +2,25 @@ import Foundation
 
 print("=================== Testing 1 ======================")
 if let t = Distance() {
-  print(t)
+    print(t)
 }
 if let s = Distance(inches: 1234) {
-  print(s)
+    print(s)
 }
 if let r = Distance(inches: -123) {
-  print(r)
+    print(r)
 }
 if let d = Distance(inches: 1234567) {
-  print(d)
+    print(d)
 }
 if let x = Distance(miles: 1, yards: 3, feet: 2, inches: 7) {
-  print(x)
+    print(x)
 }
 if let y = Distance(miles: 2, yards: -4, feet: 6, inches: 8) {
-  print(y)
+    print(y)
 }
 if let z = Distance(miles: 3, yards: 5, feet: 7, inches: 9) {
-  print(z)
+    print(z)
 }
 
 print("=================== Testing 2 ======================")
@@ -36,9 +36,9 @@ if let result = t - s {
 }
 print(r + d)
 if let result = r - d {
-  print(result)
+    print(result)
 } else {
-  print("nil")
+    print("nil")
 }
 
 let distances = [t, s, r, d]

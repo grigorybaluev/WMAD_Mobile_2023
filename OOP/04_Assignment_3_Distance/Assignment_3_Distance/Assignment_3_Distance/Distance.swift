@@ -46,7 +46,11 @@ class Distance: CustomStringConvertible, Comparable {
                 res.append(myString)
             }
         }
-        return String(res.joined(separator: " "))
+        if res == [] {
+            return "(0\")"
+        } else {
+            return "(" + String(res.joined(separator: " ")) + ")"
+        }
     }
     
     static func + (lhs: Distance, rhs: Distance) -> Distance {
@@ -77,6 +81,17 @@ class Distance: CustomStringConvertible, Comparable {
         return res
     }
     
+    static func -= (lhs: Distance, rhs: Int) -> Void {
+        lhs.inches = (lhs.inches +
+                      lhs.feet * 12 +
+                      lhs.yards * 12 * 3 +
+                      lhs.miles * 12 * 3 * 1760) - rhs
+//        if lhs.inches < 0 {
+//            lhs.inches = 0
+//        }
+        lhs.updateUnits()
+    }
+    
     static func * (lhs: Distance, rhs: Int) -> Distance {
         let res = Distance()!
         if rhs < 1 {
@@ -88,6 +103,19 @@ class Distance: CustomStringConvertible, Comparable {
                           lhs.miles * 12 * 3 * 1760) * rhs
             res.updateUnits()
             return res
+        }
+    }
+    
+    static func *= (lhs: Distance, rhs: Int) -> Void {
+        if rhs < 1 {
+            lhs.inches = 0
+            lhs.updateUnits()
+        } else {
+            lhs.inches = (lhs.inches +
+                          lhs.feet * 12 +
+                          lhs.yards * 12 * 3 +
+                          lhs.miles * 12 * 3 * 1760) * rhs
+            lhs.updateUnits()
         }
     }
     
@@ -114,5 +142,13 @@ class Distance: CustomStringConvertible, Comparable {
     
     static func > (lhs: Distance, rhs: Distance) -> Bool {
         return !(lhs < rhs || lhs == rhs)
+    }
+    
+    static func >= (lhs: Distance, rhs: Distance) -> Bool {
+        return lhs > rhs || lhs == rhs
+    }
+    
+    static func <= (lhs: Distance, rhs: Distance) -> Bool {
+        return lhs < rhs || lhs == rhs
     }
 }
