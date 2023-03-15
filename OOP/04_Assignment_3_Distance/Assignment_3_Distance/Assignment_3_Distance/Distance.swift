@@ -140,15 +140,15 @@ class Distance: CustomStringConvertible, Comparable {
         return lhs.miles < rhs.miles
     }
     
-    static func > (lhs: Distance, rhs: Distance) -> Bool {
-        return !(lhs < rhs || lhs == rhs)
-    }
-    
-    static func >= (lhs: Distance, rhs: Distance) -> Bool {
-        return lhs > rhs || lhs == rhs
-    }
-    
-    static func <= (lhs: Distance, rhs: Distance) -> Bool {
-        return lhs < rhs || lhs == rhs
-    }
+//    static func > (lhs: Distance, rhs: Distance) -> Bool {
+//        return !(lhs < rhs || lhs == rhs)
+//    }
+//
+//    static func >= (lhs: Distance, rhs: Distance) -> Bool {
+//        return lhs > rhs || lhs == rhs
+//    }
+//
+//    static func <= (lhs: Distance, rhs: Distance) -> Bool {
+//        return lhs < rhs || lhs == rhs
+//    }
 }
