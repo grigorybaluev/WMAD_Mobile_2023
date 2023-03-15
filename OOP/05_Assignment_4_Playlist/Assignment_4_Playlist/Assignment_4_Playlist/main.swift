@@ -7,5 +7,7 @@
 
 import Foundation
 
-print("Hello, World!")
+var myPlaylist = Playlist()
+myPlaylist.addSong()
 
+print(myPlaylist.songs)
