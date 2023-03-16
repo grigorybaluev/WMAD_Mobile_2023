@@ -8,8 +8,8 @@
 import Foundation
 
 struct Playlist {
-    private let ARTIST_NAME_MAX = 5
-    private let SONG_TITLE_MAX = 25
+    let ARTIST_NAME_MAX = 20
+    let SONG_TITLE_MAX = 35
     
     private(set) var songs: [Song] = []
     
