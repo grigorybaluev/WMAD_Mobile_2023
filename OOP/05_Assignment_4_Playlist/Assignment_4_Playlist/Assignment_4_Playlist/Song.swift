@@ -9,7 +9,12 @@ import Foundation
 
 struct Song {
     enum Style: String {
-        case pop, rock, alternative, rnb, hiphop, classical
+        case pop = "p"
+        case rock = "r"
+        case alternative = "a"
+        case rnb = "b"
+        case hiphop = "h"
+        case classical = "c"
     }
     // title of the song
     private(set) var title: String
@@ -42,6 +47,6 @@ extension Song: CustomStringConvertible {
     // | Title                               | Artist                   | Style       | Size (MB)
     var description: String {
         // TODO: - YOUR CODE HERE
-        return "\(self.artist), \(self.title), \(self.category), \(self.size)"
+        return "\(self.title), \(self.artist), \(self.category), \(self.size)"
     }
 }
