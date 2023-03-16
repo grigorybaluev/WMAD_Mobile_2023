@@ -8,6 +8,6 @@
 import Foundation
 
 var myPlaylist = Playlist()
-myPlaylist.addSong()
+//myPlaylist.addSong()
 
 print(myPlaylist.songs)

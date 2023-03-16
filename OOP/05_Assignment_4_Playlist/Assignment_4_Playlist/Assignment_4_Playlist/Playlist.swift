@@ -11,7 +11,62 @@ struct Playlist {
     let ARTIST_NAME_MAX = 20
     let SONG_TITLE_MAX = 35
     
-    private(set) var songs: [Song] = []
+    private(set) var songs: [Song]
+    
+    enum Menu: CaseIterable {
+        case addSong
+        case findSong
+        case deleteSong
+        case showPlaylist
+        case categorySummary
+        case playlistSize
+        case showMenu
+        case exit
+
+        var long: String {
+            switch self {
+            case .addSong: return "Add a song to the playlist"
+            case .findSong: return "Find a song on the playlist"
+            case .deleteSong: return "Delete a song from the playlist"
+            case .showPlaylist: return "Show the entire playlist"
+            case .categorySummary: return "Category summary"
+            case .playlistSize: return "Show playlist size"
+            case .showMenu: return "Show this menu"
+            case .exit: return "Exit the program"
+            }
+        }
+        var short: String {
+            switch self {
+            case .addSong: return "a"
+            case .findSong: return "f"
+            case .deleteSong: return "d"
+            case .showPlaylist: return "s"
+            case .categorySummary: return "c"
+            case .playlistSize: return "z"
+            case .showMenu: return "m"
+            case .exit: return "x"
+            }
+        }
+    }
+    
+    func getMenuCaseByShortValue(_ shortValue: String) -> Menu? {
+        switch shortValue {
+        case "a": return Menu.addSong
+        case "f": return Menu.findSong
+        case "d": return Menu.deleteSong
+        case "s": return Menu.showPlaylist
+        case "c": return Menu.categorySummary
+        case "z": return Menu.playlistSize
+        case "m": return Menu.showMenu
+        case "x": return Menu.exit
+        default: return nil
+        }
+    }
+    
+    init(_ songs: [Song] = []) {
+        self.songs = songs
+        self.menu()
+    }
     
     func validArtistInput() -> String {
         var artist: String?
@@ -83,5 +138,48 @@ struct Playlist {
         let (t, a, c, s) = inputNewSongData()
         let newSong: Song = Song(title: t, artist: a, category: c, size: s)
         songs.append(newSong)
+    }
+    
+    mutating func menu() {
+        var runMenu = true
+        while runMenu {
+            printMenu()
+//            let i = String(readLine()!).lowercased()
+//            if Menu.allCases.map({ $0.short }).contains(i) {
+//                print(Menu.)
+            
+            if let i = getMenuCaseByShortValue(String(readLine()!).lowercased()) {
+                print(i.long + "!")
+                switch i {
+                case .addSong:
+                    self.addSong()
+                case .findSong:
+                    print()
+                case .deleteSong:
+                    print()
+                case .showPlaylist:
+                    print()
+                case .categorySummary:
+                    print()
+                case .playlistSize:
+                    print()
+                case .showMenu:
+                    print()
+                case .exit:
+                    print("check")
+                    runMenu = false
+                }
+            } else {
+                print("Invalid")
+            }
+        }
+    }
+    
+    func printMenu() {
+        for menuCase in Menu.allCases {
+            print(menuCase.short.uppercased(), terminator: ": ")
+            print(menuCase.long)
+        }
+        
     }
 }
