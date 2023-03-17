@@ -13,6 +13,11 @@ struct Playlist {
     
     private(set) var songs: [Song]
     
+    init(_ songs: [Song] = []) {
+        self.songs = songs
+        self.menu()
+    }
+    
     enum Menu: CaseIterable {
         case addSong
         case findSong
@@ -63,12 +68,7 @@ struct Playlist {
         }
     }
     
-    init(_ songs: [Song] = []) {
-        self.songs = songs
-        self.menu()
-    }
-    
-    func validArtistInput() -> String {
+    func validArtistInputNewSong() -> String {
         var artist: String?
         while artist == nil {
             print("Enter a new song's artist:")
@@ -82,7 +82,7 @@ struct Playlist {
         return artist!
     }
     
-    func validTitleInput() -> String {
+    func validTitleInputNewSong() -> String {
         var title: String?
         while title == nil {
             print("Enter a new song's title:")
@@ -91,6 +91,20 @@ struct Playlist {
                 title = t
             } else {
                 print("Artist name should be max \(SONG_TITLE_MAX) characters. Please re-enter:")
+            }
+        }
+        return title!
+    }
+    
+    func validTitleInputExistingSong() -> String {
+        var title: String?
+        while title == nil {
+            print("Enter a new song's title:")
+            let t = String(readLine()!)
+            if self.songs.map({ $0.title }).contains(t) {
+                title = t
+            } else {
+                print("No such title: '\(t)' in the list")
             }
         }
         return title!
@@ -127,8 +141,8 @@ struct Playlist {
     }
     
     func inputNewSongData() -> (String, String, Song.Style, Int) {
-        let t = validTitleInput()
-        let a = validArtistInput()
+        let t = validTitleInputNewSong()
+        let a = validArtistInputNewSong()
         let c = validStyleInput()
         let s = validSizeInput()
         return (t, a, c, s)
@@ -136,18 +150,24 @@ struct Playlist {
     
     mutating func addSong() {
         let (t, a, c, s) = inputNewSongData()
-        let newSong: Song = Song(title: t, artist: a, category: c, size: s)
-        songs.append(newSong)
+        songs.append(Song(title: t, artist: a, category: c, size: s))
+    }
+    
+    
+    
+    mutating func deleteSong() {
+        let t = validTitleInputExistingSong()
+        for (index, item) in self.songs.enumerated() {
+            if item.title == t {
+                self.songs.remove(at: index)
+            }
+        }
     }
     
     mutating func menu() {
         var runMenu = true
         while runMenu {
             printMenu()
-//            let i = String(readLine()!).lowercased()
-//            if Menu.allCases.map({ $0.short }).contains(i) {
-//                print(Menu.)
-            
             if let i = getMenuCaseByShortValue(String(readLine()!).lowercased()) {
                 print(i.long + "!")
                 switch i {
@@ -156,7 +176,7 @@ struct Playlist {
                 case .findSong:
                     print()
                 case .deleteSong:
-                    print()
+                    self.deleteSong()
                 case .showPlaylist:
                     print()
                 case .categorySummary:
