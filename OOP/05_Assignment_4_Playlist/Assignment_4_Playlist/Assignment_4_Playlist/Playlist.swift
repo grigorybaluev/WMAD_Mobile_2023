@@ -110,7 +110,20 @@ struct Playlist {
         return title!
     }
     
-    func validStyleInput() -> Song.Style {
+    func validStyleInputNewSong() -> Song.Style {
+        var category: Song.Style?
+        while category == nil {
+            print("Enter a new song's category (P: Pop, R: Rock, A: Alternative, B: RnB, H: Hiphop, C: Classical):")
+            if let c = Song.Style(rawValue: String(readLine()!).lowercased()) {
+                category = c
+            } else {
+                print("Invalid category. Please re-enter:")
+            }
+        }
+        return category!
+    }
+    
+    func validStyleInputExistingSong() -> Song.Style {
         var category: Song.Style?
         while category == nil {
             print("Enter a new song's category (P: Pop, R: Rock, A: Alternative, B: RnB, H: Hiphop, C: Classical):")
@@ -143,7 +156,7 @@ struct Playlist {
     func inputNewSongData() -> (String, String, Song.Style, Int) {
         let t = validTitleInputNewSong()
         let a = validArtistInputNewSong()
-        let c = validStyleInput()
+        let c = validStyleInputNewSong()
         let s = validSizeInput()
         return (t, a, c, s)
     }
@@ -164,24 +177,47 @@ struct Playlist {
         }
     }
     
-    func showPlaylist() {
+    func showPlaylist(_ category: Song.Style? = nil) {
         print("---------------------------------------------------------------------------------------------")
         print("| Title                               | Artist                    | Style       | Size (MB)  ")
         print("---------------------------------------------------------------------------------------------")
-        for song in self.songs {
-            print(song)
+        
+        if category == nil {
+            for song in self.songs {
+                print(song)
+            }
+            print("---------------------------------------------------------------------------------------------")
+            print("Total: \(self.songs.count) songs in the playlist.")
+            self.playlistSize()
+        } else {
+            for song in self.songs.filter( {$0.category == category} ) {
+                print(song)
+            }
+            print("---------------------------------------------------------------------------------------------")
+            print("Total: \(self.songs.count) songs of \(category!.styleFull) category in the playlist.")
+            self.playlistSize(category)
         }
-        print("---------------------------------------------------------------------------------------------")
     }
     
-    func playlistSize() {
-        print("Total size: \(self.songs.map({ $0.size }).reduce(0, {$0 + $1})) KB")
+    func playlistSize(_ category: Song.Style? = nil) {
+        if category == nil {
+            print("Total size: \(self.songs.map({ $0.size }).reduce(0, {$0 + $1})) KB")
+        } else {
+            print("Total size: \(self.songs.filter( {$0.category == category} ).map({ $0.size }).reduce(0, {$0 + $1})) KB")
+        }
+    }
+    
+    func showMenu() {
+        for menuCase in Menu.allCases {
+            print(menuCase.short.uppercased(), terminator: ": ")
+            print(menuCase.long)
+        }
     }
     
     mutating func menu() {
         var runMenu = true
         while runMenu {
-            printMenu()
+            showMenu()
             if let i = getMenuCaseByShortValue(String(readLine()!).lowercased()) {
                 print(i.long + "!")
                 switch i {
@@ -194,11 +230,12 @@ struct Playlist {
                 case .showPlaylist:
                     self.showPlaylist()
                 case .categorySummary:
-                    print()
+                    let category = validStyleInputExistingSong()
+                    self.showPlaylist(category)
                 case .playlistSize:
                     self.playlistSize()
                 case .showMenu:
-                    print()
+                    continue
                 case .exit:
                     runMenu = false
                 }
@@ -206,13 +243,5 @@ struct Playlist {
                 print("Invalid command. Please re-enter:")
             }
         }
-    }
-    
-    func printMenu() {
-        for menuCase in Menu.allCases {
-            print(menuCase.short.uppercased(), terminator: ": ")
-            print(menuCase.long)
-        }
-        
     }
 }
