@@ -163,6 +163,34 @@ struct Playlist {
         songs.append(Song(title: t, artist: a, category: c, size: s))
     }
     
+    mutating func findSong() {
+        print("Enter your search Keyword:")
+        let q = String(readLine()!)
+        let pattern = ".*" + q + ".*"
+        var res = ["title": [], "artist": []]
+        
+        for song in self.songs {
+            if let _ = song.title.range(of: pattern, options: .regularExpression) {
+                res["title"]!.append(song)
+            }
+            if let _ = song.artist.range(of: pattern, options: .regularExpression) {
+                res["artist"]!.append(song)
+            }
+        }
+        
+        print("=== Matched Titles ===")
+        for s in res["title"]! {
+            print(s)
+        }
+        print("=== \(res["title"]!.count) matches ===")
+        
+        print("=== Matched Artists ===")
+        for s in res["artist"]! {
+            print(s)
+        }
+        print("=== \(res["artist"]!.count) matches ===")
+    }
+    
     mutating func deleteSong() {
         if let t = validTitleInputExistingSong() {
             for (index, item) in self.songs.enumerated() {
@@ -223,7 +251,7 @@ struct Playlist {
                 case .addSong:
                     self.addSong()
                 case .findSong:
-                    print()
+                    self.findSong()
                 case .deleteSong:
                     self.deleteSong()
                 case .showPlaylist:
