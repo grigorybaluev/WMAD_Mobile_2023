@@ -9,7 +9,7 @@ import Foundation
 
 
 struct Song {
-    let ARTIST_NAME_MAX = 20
+    let ARTIST_NAME_MAX = 25
     let SONG_TITLE_MAX = 35
     let STYLE_MAX = 11
     

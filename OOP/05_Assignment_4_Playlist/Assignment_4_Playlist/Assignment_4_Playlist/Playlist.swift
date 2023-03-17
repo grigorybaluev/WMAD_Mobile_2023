@@ -8,7 +8,7 @@
 import Foundation
 
 struct Playlist {
-    let ARTIST_NAME_MAX = 20
+    let ARTIST_NAME_MAX = 25
     let SONG_TITLE_MAX = 35
     
     private(set) var songs: [Song]
@@ -164,6 +164,16 @@ struct Playlist {
         }
     }
     
+    func showPlaylist() {
+        print("---------------------------------------------------------------------------------------------")
+        print("| Title                               | Artist                    | Style       | Size (MB)  ")
+        print("---------------------------------------------------------------------------------------------")
+        for song in self.songs {
+            print(song)
+        }
+        print("---------------------------------------------------------------------------------------------")
+    }
+    
     mutating func menu() {
         var runMenu = true
         while runMenu {
@@ -178,7 +188,7 @@ struct Playlist {
                 case .deleteSong:
                     self.deleteSong()
                 case .showPlaylist:
-                    print()
+                    self.showPlaylist()
                 case .categorySummary:
                     print()
                 case .playlistSize:
@@ -190,7 +200,7 @@ struct Playlist {
                     runMenu = false
                 }
             } else {
-                print("Invalid")
+                print("Invalid command. Please re-enter:")
             }
         }
     }
