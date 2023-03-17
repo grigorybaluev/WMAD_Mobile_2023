@@ -1,10 +1,3 @@
-//
-//  Playlist.swift
-//  Assignment4
-//
-//  Created by Derrick Park on 2023-03-03.
-//
-
 import Foundation
 
 struct Playlist {
@@ -96,13 +89,17 @@ struct Playlist {
         return title!
     }
     
-    func validTitleInputExistingSong() -> String {
+    func validTitleInputExistingSong() -> String? {
         var title: String?
         while title == nil {
-            print("Enter a new song's title:")
+            print("Enter a new song's title or enter !showPlaylist to see all songs:")
             let t = String(readLine()!)
             if self.songs.map({ $0.title }).contains(t) {
                 title = t
+            } else if t == "!showPlaylist" {
+                self.showPlaylist()
+            } else if t == "" {
+                return nil
             } else {
                 print("No such title: '\(t)' in the list")
             }
@@ -166,14 +163,16 @@ struct Playlist {
         songs.append(Song(title: t, artist: a, category: c, size: s))
     }
     
-    
-    
     mutating func deleteSong() {
-        let t = validTitleInputExistingSong()
-        for (index, item) in self.songs.enumerated() {
-            if item.title == t {
-                self.songs.remove(at: index)
+        if let t = validTitleInputExistingSong() {
+            for (index, item) in self.songs.enumerated() {
+                if item.title == t {
+                    self.songs.remove(at: index)
+                    return
+                }
             }
+        } else {
+            return
         }
     }
     

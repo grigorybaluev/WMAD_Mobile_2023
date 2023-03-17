@@ -1,10 +1,3 @@
-//
-//  Song.swift
-//  Assignment4
-//
-//  Created by Derrick Park on 2023-03-03.
-//
-
 import Foundation
 
 
@@ -63,22 +56,12 @@ struct Song {
 }
 
 extension Song: CustomStringConvertible {
-    // Size should be printed in Megabytes (use 1000 kilobytes = 1 MB for this calculation), to 1 decimal place.
-    // The category abbreviations used should be: Pop, Rock, Alt, Cls, HH, RnB
-    // Example:
-    // | Title                               | Artist                   | Style       | Size (MB)
-    
     var description: String {
         var res: String = "| "
         res += self.title + String(repeating: " ", count: SONG_TITLE_MAX - self.title.count) + " | "
         res += self.artist + String(repeating: " ", count: ARTIST_NAME_MAX - self.artist.count) + " | "
         res += self.category.styleFull + String(repeating: " ", count: STYLE_MAX - self.category.styleFull.count) + " | "
-//        res += String(format: "%2d", Float(self.size)/1000) + " (MB)"
         res += String(Double(self.size/100)/10) + " (MB)"
         return res
     }
-    
-//    func addSpaces(num: Int) -> String {
-//        return ""
-//    }
 }
