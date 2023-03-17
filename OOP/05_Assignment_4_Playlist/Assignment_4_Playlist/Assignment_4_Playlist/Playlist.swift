@@ -1,8 +1,8 @@
 import Foundation
 
 struct Playlist {
-    let ARTIST_NAME_MAX = 25
-    let SONG_TITLE_MAX = 35
+//    let ARTIST_NAME_MAX = 25
+//    let SONG_TITLE_MAX = 35
     
     private(set) var songs: [Song]
     
@@ -66,10 +66,10 @@ struct Playlist {
         while artist == nil {
             print("Enter a new song's artist:")
             let a = String(readLine()!)
-            if 0 < a.count && a.count < ARTIST_NAME_MAX {
+            if 0 < a.count && a.count < Song.ARTIST_NAME_MAX {
                 artist = a
             } else {
-                print("Artist name should be max \(ARTIST_NAME_MAX) characters. Please re-enter:")
+                print("Artist name should be max \(Song.ARTIST_NAME_MAX) characters. Please re-enter:")
             }
         }
         return artist!
@@ -80,10 +80,10 @@ struct Playlist {
         while title == nil {
             print("Enter a new song's title:")
             let t = String(readLine()!)
-            if 0 < t.count && t.count < SONG_TITLE_MAX {
+            if 0 < t.count && t.count < Song.SONG_TITLE_MAX {
                 title = t
             } else {
-                print("Artist name should be max \(SONG_TITLE_MAX) characters. Please re-enter:")
+                print("Artist name should be max \(Song.SONG_TITLE_MAX) characters. Please re-enter:")
             }
         }
         return title!
@@ -170,10 +170,10 @@ struct Playlist {
         var res = ["title": [], "artist": []]
         
         for song in self.songs {
-            if let _ = song.title.range(of: pattern, options: .regularExpression) {
+            if let _ = song.title.range(of: pattern, options: [.regularExpression, .caseInsensitive]) {
                 res["title"]!.append(song)
             }
-            if let _ = song.artist.range(of: pattern, options: .regularExpression) {
+            if let _ = song.artist.range(of: pattern, options: [.regularExpression, .caseInsensitive]) {
                 res["artist"]!.append(song)
             }
         }
@@ -196,6 +196,7 @@ struct Playlist {
             for (index, item) in self.songs.enumerated() {
                 if item.title == t {
                     self.songs.remove(at: index)
+                    print("Song \(item.title) successfully deleted!")
                     return
                 }
             }

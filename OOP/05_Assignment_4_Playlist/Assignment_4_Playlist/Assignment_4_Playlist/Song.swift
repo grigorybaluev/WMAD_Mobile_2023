@@ -2,9 +2,9 @@ import Foundation
 
 
 struct Song {
-    let ARTIST_NAME_MAX = 25
-    let SONG_TITLE_MAX = 35
-    let STYLE_MAX = 11
+    static let ARTIST_NAME_MAX = 25
+    static let SONG_TITLE_MAX = 35
+    static let STYLE_MAX = 11
     
     enum Style: String {
         case pop = "p"
@@ -58,9 +58,9 @@ struct Song {
 extension Song: CustomStringConvertible {
     var description: String {
         var res: String = "| "
-        res += self.title + String(repeating: " ", count: SONG_TITLE_MAX - self.title.count) + " | "
-        res += self.artist + String(repeating: " ", count: ARTIST_NAME_MAX - self.artist.count) + " | "
-        res += self.category.styleFull + String(repeating: " ", count: STYLE_MAX - self.category.styleFull.count) + " | "
+        res += self.title + String(repeating: " ", count: Song.SONG_TITLE_MAX - self.title.count) + " | "
+        res += self.artist + String(repeating: " ", count: Song.ARTIST_NAME_MAX - self.artist.count) + " | "
+        res += self.category.styleFull + String(repeating: " ", count: Song.STYLE_MAX - self.category.styleFull.count) + " | "
         res += String(Double(self.size/100)/10) + " (MB)"
         return res
     }
