@@ -174,6 +174,10 @@ struct Playlist {
         print("---------------------------------------------------------------------------------------------")
     }
     
+    func playlistSize() {
+        print("Total size: \(self.songs.map({ $0.size }).reduce(0, {$0 + $1})) KB")
+    }
+    
     mutating func menu() {
         var runMenu = true
         while runMenu {
@@ -192,11 +196,10 @@ struct Playlist {
                 case .categorySummary:
                     print()
                 case .playlistSize:
-                    print()
+                    self.playlistSize()
                 case .showMenu:
                     print()
                 case .exit:
-                    print("check")
                     runMenu = false
                 }
             } else {
