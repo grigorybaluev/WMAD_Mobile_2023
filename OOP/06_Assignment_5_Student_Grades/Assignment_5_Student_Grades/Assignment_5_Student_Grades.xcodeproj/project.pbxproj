@@ -27,6 +27,7 @@
 		FA6169D729C9248A00928DA7 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		FA6169DE29C9250400928DA7 /* sample.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = sample.in; sourceTree = "<group>"; };
 		FA6169DF29C9250400928DA7 /* sample.out */ = {isa = PBXFileReference; lastKnownFileType = text; path = sample.out; sourceTree = "<group>"; };
+		FAC0AF6E29CA65D300BB31AE /* sample_out.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sample_out.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +63,7 @@
 				FA6169D729C9248A00928DA7 /* main.swift */,
 				FA6169DE29C9250400928DA7 /* sample.in */,
 				FA6169DF29C9250400928DA7 /* sample.out */,
+				FAC0AF6E29CA65D300BB31AE /* sample_out.txt */,
 			);
 			path = Assignment_5_Student_Grades;
 			sourceTree = "<group>";
