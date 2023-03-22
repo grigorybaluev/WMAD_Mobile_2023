@@ -7,7 +7,7 @@ class Student {
     private (set) var firstName: String
     private (set) var lastName: String
     private (set) var fullName: String
-    private (set) var studentClasses: [String: [Int]]
+    private (set) var studentSubjects: [String: [Int]]
     
     
     init(firstName: String = "", lastName: String = "") {
@@ -15,11 +15,11 @@ class Student {
         self.firstName = firstName
         self.lastName = lastName
         self.fullName = firstName + " " + lastName
-        self.studentClasses = [:]
+        self.studentSubjects = [:]
     }
     
-    func addClass(classTitle: String, grades: [Int]) -> Void {
-        self.studentClasses[classTitle] = grades
+    func addSubject(subjectTitle: String, grades: [Int]) -> Void {
+        self.studentSubjects[subjectTitle] = grades
     }
     
     func studentExist() -> Bool {
@@ -30,17 +30,12 @@ class Student {
         Student.studentList.append(self)
         Student.studentNamesSet.insert(self.fullName)
     }
-    
-    
-    
 }
 
 extension Student: CustomStringConvertible {
     var description: String {
-        return [self.firstName, self.lastName, self.studentClasses.description].joined(separator: " ")
+        return [self.firstName, self.lastName, self.studentSubjects.description].joined(separator: " ")
     }
-    
-    
 }
 
 func getStudent(_ fullName: String) -> Student? {
@@ -49,5 +44,4 @@ func getStudent(_ fullName: String) -> Student? {
     } else {
         return nil
     }
-        
 }

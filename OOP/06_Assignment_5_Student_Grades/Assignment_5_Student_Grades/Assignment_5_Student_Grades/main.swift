@@ -28,7 +28,7 @@ if let contents = try? String(contentsOfFile: "/Users/macbook/Documents/study_WM
         } else {
             currentStudent = getStudent(currentStudent.fullName)!
         }
-        currentStudent.addClass(classTitle: subjectTitle, grades: gradesList)
+        currentStudent.addSubject(subjectTitle: subjectTitle, grades: gradesList)
     }
 }
 
