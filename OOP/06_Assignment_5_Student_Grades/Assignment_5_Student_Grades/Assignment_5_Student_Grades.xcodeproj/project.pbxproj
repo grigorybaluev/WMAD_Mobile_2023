@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		FA6169D829C9248A00928DA7 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6169D729C9248A00928DA7 /* main.swift */; };
 		FAC0AF7029CA896F00BB31AE /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC0AF6F29CA896F00BB31AE /* Student.swift */; };
+		FAC0AF7429CA946E00BB31AE /* Subjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC0AF7329CA946E00BB31AE /* Subjects.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,6 +31,7 @@
 		FA6169DF29C9250400928DA7 /* sample.out */ = {isa = PBXFileReference; lastKnownFileType = text; path = sample.out; sourceTree = "<group>"; };
 		FAC0AF6E29CA65D300BB31AE /* sample_out.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sample_out.txt; sourceTree = "<group>"; };
 		FAC0AF6F29CA896F00BB31AE /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		FAC0AF7329CA946E00BB31AE /* Subjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subjects.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +48,7 @@
 		FA6169CB29C9248A00928DA7 = {
 			isa = PBXGroup;
 			children = (
+				FAC0AF7329CA946E00BB31AE /* Subjects.swift */,
 				FAC0AF6F29CA896F00BB31AE /* Student.swift */,
 				FA6169D629C9248A00928DA7 /* Assignment_5_Student_Grades */,
 				FA6169D529C9248A00928DA7 /* Products */,
@@ -129,6 +132,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAC0AF7429CA946E00BB31AE /* Subjects.swift in Sources */,
 				FA6169D829C9248A00928DA7 /* main.swift in Sources */,
 				FAC0AF7029CA896F00BB31AE /* Student.swift in Sources */,
 			);
