@@ -10,16 +10,22 @@ import Foundation
 class Student {
     private (set) var firstName: String
     private (set) var lastName: String
+    private (set) var studentClasses: [String: [Int]]
     
     init(firstName: String = "", lastName: String = "") {
         self.firstName = firstName
         self.lastName = lastName
+        self.studentClasses = [:]
+    }
+    
+    func addClass(classTitle: String, grades: [Int]) -> Void {
+        self.studentClasses[classTitle] = grades
     }
 }
 
 extension Student: CustomStringConvertible {
     var description: String {
-        return String(self.firstName + " " + self.lastName)
+        return [self.firstName, self.lastName, self.studentClasses.description].joined(separator: " ")
     }
     
     

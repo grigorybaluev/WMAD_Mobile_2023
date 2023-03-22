@@ -10,8 +10,29 @@ import Foundation
 
 // How to read a file?
 let filename = "sample.in"
+var students: [Student] = []
 if let contents = try? String(contentsOfFile: "/Users/macbook/Documents/study_WMAD/WMAD_Mobile_2023/OOP/06_Assignment_5_Student_Grades/Assignment_5_Student_Grades/Assignment_5_Student_Grades/\(filename)") {
-    print(contents)
+    let contentsSeparated = contents.split(separator: "\n")
+    let studentCount: Int = Int(contentsSeparated[0])!
+    for i in Range(uncheckedBounds: (0, studentCount)) {
+        let nameList = contentsSeparated[i*2+1].split(separator: ",").map({$0.trimmingCharacters(in: .whitespacesAndNewlines)})
+        let firstName = nameList[1]
+        let lastName = nameList[0]
+        let subjectTitle = String(contentsSeparated[i*2+2].split(separator: " ")[0])
+        let gradesList = contentsSeparated[i*2+2].split(separator: " ")[1...].map({Int($0)!})
+        
+        print(firstName)
+        print(lastName)
+        print(subjectTitle)
+        print(gradesList)
+        
+        let newStudent = Student(firstName: firstName, lastName: lastName)
+        newStudent.addClass(classTitle: subjectTitle, grades: gradesList)
+        print(newStudent)
+        
+        print()
+    }
+//    print(contents)
 }
 
 //// How to write into a file?
@@ -34,5 +55,5 @@ if let contents = try? String(contentsOfFile: "/Users/macbook/Documents/study_WM
 //    }
 //}
 
-let a = Student(firstName: "Gregory", lastName: "Baluev")
-print(a)
+//let a = Student(firstName: "Gregory", lastName: "Baluev")
+//print(a)
