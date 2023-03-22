@@ -7,7 +7,8 @@ class Student {
     private (set) var firstName: String
     private (set) var lastName: String
     private (set) var fullName: String
-    private (set) var studentSubjects: [String: [Int]]
+//    private (set) var studentSubjects: [String: [Int]]
+    private (set) var studentSubjects: [(SubjectBase, [Int])]
     
     
     init(firstName: String = "", lastName: String = "") {
@@ -15,11 +16,12 @@ class Student {
         self.firstName = firstName
         self.lastName = lastName
         self.fullName = firstName + " " + lastName
-        self.studentSubjects = [:]
+        self.studentSubjects = []
     }
     
     func addSubject(subjectTitle: String, grades: [Int]) -> Void {
-        self.studentSubjects[subjectTitle] = grades
+        let newSubject = SubjectBase(subjectTitle: subjectTitle, finalExam: 90)
+        self.studentSubjects.append((newSubject, grades))
     }
     
     func studentExist() -> Bool {

@@ -3,7 +3,6 @@ import Foundation
 
 // How to read a file?
 let filename = "sampleEdit.in"
-//var students: [Student] = []
 if let contents = try? String(contentsOfFile: "/Users/macbook/Documents/study_WMAD/WMAD_Mobile_2023/OOP/06_Assignment_5_Student_Grades/Assignment_5_Student_Grades/Assignment_5_Student_Grades/\(filename)") {
     let contentsSeparated = contents.split(separator: "\n")
     let studentCount: Int = Int(contentsSeparated[0])!
@@ -13,13 +12,6 @@ if let contents = try? String(contentsOfFile: "/Users/macbook/Documents/study_WM
         let lastName = nameList[0]
         let subjectTitle = String(contentsSeparated[i*2+2].split(separator: " ")[0])
         let gradesList = contentsSeparated[i*2+2].split(separator: " ")[1...].map({Int($0)!})
-        
-//        print(Student.studentNamesSet)
-//        print(Student.studentNamesSet.contains(firstName + " " + lastName))
-//        Student.studentNamesSet.insert(firstName + " " + lastName)
-//        print(Student.studentNamesSet)
-//        print(Student.studentNamesSet.contains(firstName + " " + lastName))
-//        print()
         
         var currentStudent = Student(firstName: firstName, lastName: lastName)
         

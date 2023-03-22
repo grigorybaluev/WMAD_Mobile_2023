@@ -17,15 +17,26 @@ class SubjectBase {
     func getFinalAvg() -> Float {
         return 0.0
     }
-}
-
-extension SubjectBase: CustomStringConvertible {
-    var description: String {
+    
+    func printSubjectData() {
         var res = self.subjectTitle
         res += "\n\n"
         res += "Student                                   Final   Final   Letter\n"
         res += "Name                                      Exam    Avg     Grade\n"
         res += "----------------------------------------------------------------\n"
+        print(res)
+    }
+}
+
+extension SubjectBase: CustomStringConvertible {
+    var description: String {
+        var res = self.subjectTitle
+//        res += "\n\n"
+//        res += "Student                                   Final   Final   Letter\n"
+//        res += "Name                                      Exam    Avg     Grade\n"
+//        res += "----------------------------------------------------------------\n"
         return res
     }
 }
+
+
