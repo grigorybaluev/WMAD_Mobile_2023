@@ -1,16 +1,9 @@
-//
-//  main.swift
-//  Assignment5
-//
-//  Created by Derrick Park on 2023-03-10.
-//
-
 import Foundation
 
 
 // How to read a file?
-let filename = "sample.in"
-var students: [Student] = []
+let filename = "sampleEdit.in"
+//var students: [Student] = []
 if let contents = try? String(contentsOfFile: "/Users/macbook/Documents/study_WMAD/WMAD_Mobile_2023/OOP/06_Assignment_5_Student_Grades/Assignment_5_Student_Grades/Assignment_5_Student_Grades/\(filename)") {
     let contentsSeparated = contents.split(separator: "\n")
     let studentCount: Int = Int(contentsSeparated[0])!
@@ -21,19 +14,26 @@ if let contents = try? String(contentsOfFile: "/Users/macbook/Documents/study_WM
         let subjectTitle = String(contentsSeparated[i*2+2].split(separator: " ")[0])
         let gradesList = contentsSeparated[i*2+2].split(separator: " ")[1...].map({Int($0)!})
         
-        print(firstName)
-        print(lastName)
-        print(subjectTitle)
-        print(gradesList)
+//        print(Student.studentNamesSet)
+//        print(Student.studentNamesSet.contains(firstName + " " + lastName))
+//        Student.studentNamesSet.insert(firstName + " " + lastName)
+//        print(Student.studentNamesSet)
+//        print(Student.studentNamesSet.contains(firstName + " " + lastName))
+//        print()
         
-        let newStudent = Student(firstName: firstName, lastName: lastName)
-        newStudent.addClass(classTitle: subjectTitle, grades: gradesList)
-        print(newStudent)
+        var currentStudent = Student(firstName: firstName, lastName: lastName)
         
-        print()
+        if !currentStudent.studentExist() {
+            currentStudent.addNewStudent()
+        } else {
+            currentStudent = getStudent(currentStudent.fullName)!
+        }
+        currentStudent.addClass(classTitle: subjectTitle, grades: gradesList)
     }
-//    print(contents)
 }
+
+
+Student.studentList.map({print($0)})
 
 //// How to write into a file?
 //let outputFilename = "sample.out"

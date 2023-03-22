@@ -32,6 +32,7 @@
 		FAC0AF6E29CA65D300BB31AE /* sample_out.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sample_out.txt; sourceTree = "<group>"; };
 		FAC0AF6F29CA896F00BB31AE /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		FAC0AF7329CA946E00BB31AE /* Subjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subjects.swift; sourceTree = "<group>"; };
+		FAC0AF7529CB99AC00BB31AE /* sampleEdit.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sampleEdit.in; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +69,7 @@
 			children = (
 				FA6169D729C9248A00928DA7 /* main.swift */,
 				FA6169DE29C9250400928DA7 /* sample.in */,
+				FAC0AF7529CB99AC00BB31AE /* sampleEdit.in */,
 				FA6169DF29C9250400928DA7 /* sample.out */,
 				FAC0AF6E29CA65D300BB31AE /* sample_out.txt */,
 			);

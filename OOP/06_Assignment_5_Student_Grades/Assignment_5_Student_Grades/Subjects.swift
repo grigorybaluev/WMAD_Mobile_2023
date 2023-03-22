@@ -1,10 +1,3 @@
-//
-//  Class.swift
-//  Assignment_5_Student_Grades
-//
-//  Created by MacBook on 21.03.2023.
-//
-
 import Foundation
 
 class SubjectBase {
