@@ -31,6 +31,7 @@ class Student {
         default:
             newSubject = SubjectBase(subjectTitle: "Unknown", finalExam: 0)
         }
+        newSubject.updFinalAvg()
         self.studentSubjects.append(newSubject)
     }
     
