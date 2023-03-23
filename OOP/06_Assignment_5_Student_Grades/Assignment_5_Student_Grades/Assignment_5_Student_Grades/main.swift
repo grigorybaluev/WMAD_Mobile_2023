@@ -27,6 +27,8 @@ if let contents = try? String(contentsOfFile: "/Users/macbook/Documents/study_WM
 
 Student.studentList.map({print($0)})
 
+
+
 //// How to write into a file?
 //let outputFilename = "sample.out"
 //let documentsToProjectDirectory = "study_WMAD/WMAD_Mobile_2023/OOP/06_Assignment_5_Student_Grades/Assignment_5_Student_Grades/Assignment_5_Student_Grades/"
