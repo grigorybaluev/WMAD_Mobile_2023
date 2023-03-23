@@ -30,19 +30,17 @@ if let contents = try? String(contentsOfFile: "/Users/macbook/Documents/study_WM
 var res = "Student Grade Summary\n---------------------\n\n"
 for s in ["English", "History", "Math"] {
     res += getSubjectData(subjectTitle: s)
-    print(getSubjectData(subjectTitle: s), terminator: "")
+//    print(getSubjectData(subjectTitle: s), terminator: "")
 }
 
-res += "OVERALL GRADE DISTRIBUTION\n"
+res += "OVERALL GRADE DISTRIBUTION\n\n"
 for (k, v) in SubjectBase.gradeDistribution.sorted(by: {$0 < $1}) {
     res += String(k)
     res += ": "
     res += String(v)
     res += "\n"
-    print(k, ": ", v)
 }
-res += "\n"
-
+print(res)
 
 // How to write into a file?
 let outputFilename = "final.out"

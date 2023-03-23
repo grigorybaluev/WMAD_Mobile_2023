@@ -117,16 +117,14 @@ class SubjectMath: SubjectBase {
 func avgToLetterGrade(avg: Float) -> String {
     if avg > 90.0 {
         return "A"
-    } else if avg < 90.0 && avg > 75.0 {
+    } else if avg < 90.0 && avg > 80.0 {
         return "B"
-    } else if avg < 75.0 && avg > 60.0 {
+    } else if avg < 80.0 && avg > 70.0 {
         return "C"
-    } else if avg < 60.0 && avg > 45.0 {
+    } else if avg < 70.0 && avg > 60.0 {
         return "D"
-    } else if avg < 45.0 && avg > 30.0 {
-        return "E"
     } else {
-        return ""
+        return "F"
     }
 }
 
@@ -138,7 +136,10 @@ func getSubjectData(subjectTitle: String) -> String {
     res += "Name                                      Exam    Avg     Grade\n"
     res += "----------------------------------------------------------------\n"
     
-    for student in Student.studentList.sorted(by: { $0.lastName < $1.lastName}) {
+//    let sortedListOfStudents = Student.studentList.sorted(by: { $0.lastName < $1.lastName})
+
+    
+    for student in Student.studentList {
         var studentFullName: String = ""
         var studentFinalExam: String = ""
         var studentFinalAvg: String = ""
