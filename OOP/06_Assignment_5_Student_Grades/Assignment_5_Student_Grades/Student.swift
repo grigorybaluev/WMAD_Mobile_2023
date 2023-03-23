@@ -3,16 +3,13 @@ import Foundation
 class Student {
     static var studentNamesSet: Set<String> = []
     static var studentList: [Student] = []
-//    private (set) var studentUUID: UUID
     private (set) var firstName: String
     private (set) var lastName: String
     private (set) var fullName: String
-//    private (set) var studentSubjects: [String: [Int]]
     private (set) var studentSubjects: [SubjectBase]
     
     
     init(firstName: String = "", lastName: String = "") {
-//        self.studentUUID = UUID()
         self.firstName = firstName
         self.lastName = lastName
         self.fullName = firstName + " " + lastName
