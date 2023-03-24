@@ -45,6 +45,23 @@ class Pawn: Piece {
     private (set) var promoted: Bool = false
     private (set) var newPiece: Piece? = nil
     
+    init(value: Int, isWhite: Bool, promoted: Bool, newPiece: promotionNewPiece?) {
+        self.promoted = promoted
+        switch newPiece {
+        case .Queen:
+            self.newPiece = Queen(isWhite: isWhite)
+        case .Rook:
+            self.newPiece = Rook(isWhite: isWhite)
+        case .Bishop:
+            self.newPiece = Bishop(isWhite: isWhite)
+        case .Knight:
+            self.newPiece = Knight(isWhite: isWhite)
+        default:
+            self.newPiece = nil
+        }
+        super.init(value: value, isWhite: isWhite)
+    }
+    
     override func move() {
         print("Forward 1")
         return
@@ -55,9 +72,22 @@ class Pawn: Piece {
     }
 }
 
+extension Pawn {
+    enum promotionNewPiece {
+        case Queen
+        case Rook
+        case Bishop
+        case Knight
+    }
+}
+
 class Knight: Piece {
     override var description: String {
         return "Knight(value=" + String(self.getValue()) + ")"
+    }
+    
+    init(isWhite: Bool) {
+        super.init(value: 2, isWhite: isWhite)
     }
     
     override func move() {
@@ -71,6 +101,10 @@ class Bishop: Piece {
         return "Bishop(value=" + String(self.getValue()) + ")"
     }
     
+    init(isWhite: Bool) {
+        super.init(value: 3, isWhite: isWhite)
+    }
+    
     override func move() {
         print("Diagonally")
         return
@@ -82,6 +116,10 @@ class Rook: Piece {
         return "Pawn(value=" + String(self.getValue()) + ")"
     }
     
+    init(isWhite: Bool) {
+        super.init(value: 5, isWhite: isWhite)
+    }
+    
     override func move() {
         print("Horizontally or vertically")
         return
@@ -91,6 +129,10 @@ class Rook: Piece {
 class Queen: Piece {
     override var description: String {
         return "Queen(value=" + String(self.getValue()) + ")"
+    }
+    
+    init(isWhite: Bool) {
+        super.init(value: 9, isWhite: isWhite)
     }
     
     override func move() {
