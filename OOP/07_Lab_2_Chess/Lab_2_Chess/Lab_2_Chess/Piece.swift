@@ -45,7 +45,7 @@ class Pawn: Piece {
     private (set) var promoted: Bool = false
     private (set) var newPiece: Piece? = nil
     
-    init(value: Int, isWhite: Bool, promoted: Bool, newPiece: promotionNewPiece?) {
+    init(isWhite: Bool, promoted: Bool, newPiece: promotionNewPiece?) {
         self.promoted = promoted
         switch newPiece {
         case .Queen:
@@ -59,7 +59,7 @@ class Pawn: Piece {
         default:
             self.newPiece = nil
         }
-        super.init(value: value, isWhite: isWhite)
+        super.init(value: 1, isWhite: isWhite)
     }
     
     override func move() {
@@ -69,6 +69,11 @@ class Pawn: Piece {
     
     static func == (lhs: Pawn, rhs: Pawn) -> Bool {
         return lhs.getValue() == rhs.getValue() && lhs.isWhite == rhs.isWhite && lhs.promoted == rhs.promoted && lhs.newPiece == rhs.newPiece
+    }
+    
+    func promote(_ newPiece: Piece) {
+        self.newPiece = newPiece
+        self.promoted = true
     }
 }
 
@@ -144,6 +149,10 @@ class Queen: Piece {
 class King: Piece {
     override var description: String {
         return "King(value=" + String(self.getValue()) + ")"
+    }
+    
+    init(isWhite: Bool) {
+        super.init(value: 1000, isWhite: isWhite)
     }
     
     override func move() {

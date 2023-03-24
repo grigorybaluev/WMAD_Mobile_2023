@@ -7,11 +7,22 @@
 
 import Foundation
 
-let p1 = Pawn(value: 1, isWhite: true, promoted: true, newPiece: .Queen)
-let p2 = Pawn(value: 1, isWhite: true, promoted: false, newPiece: nil)
-let p3 = Pawn(value: 1, isWhite: false, promoted: false, newPiece: nil)
-let p4 = Pawn(value: 1, isWhite: false, promoted: true, newPiece: .Queen)
-let p5 = Pawn(value: 1, isWhite: true, promoted: true, newPiece: .Knight)
+let allPieces = [Pawn(isWhite: false, promoted: false, newPiece: nil),
+                 Knight(isWhite: false),
+                 Bishop(isWhite: false),
+                 Rook(isWhite: false),
+                 Queen(isWhite: false),
+                 King(isWhite: false)]
+
+for piece in allPieces {
+    print(piece)
+}
+
+let p1 = Pawn(isWhite: true, promoted: true, newPiece: .Queen)
+let p2 = Pawn(isWhite: true, promoted: false, newPiece: nil)
+let p3 = Pawn(isWhite: false, promoted: false, newPiece: nil)
+let p4 = Pawn(isWhite: false, promoted: true, newPiece: .Queen)
+let p5 = Pawn(isWhite: true, promoted: true, newPiece: .Knight)
 
 print(p1 == p2)
 print(p1 == p4)
