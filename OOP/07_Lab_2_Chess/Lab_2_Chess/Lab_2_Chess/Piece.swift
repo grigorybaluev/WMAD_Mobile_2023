@@ -7,7 +7,8 @@
 
 import Foundation
 
-class Piece: CustomStringConvertible {
+class Piece: CustomStringConvertible, Equatable {
+    
     var description: String {
         return ""
     }
@@ -29,6 +30,10 @@ class Piece: CustomStringConvertible {
     
     func move() -> Void {
         return
+    }
+    
+    static func == (lhs: Piece, rhs: Piece) -> Bool {
+        return lhs.value == rhs.value && lhs.isWhite == rhs.isWhite
     }
 }
 
