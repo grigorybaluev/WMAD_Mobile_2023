@@ -42,9 +42,16 @@ class Pawn: Piece {
         return "Pawn(value=" + String(self.getValue()) + ")"
     }
     
+    private (set) var promoted: Bool = false
+    private (set) var newPiece: Piece? = nil
+    
     override func move() {
         print("Forward 1")
         return
+    }
+    
+    static func == (lhs: Pawn, rhs: Pawn) -> Bool {
+        return lhs.getValue() == rhs.getValue() && lhs.isWhite == rhs.isWhite && lhs.promoted == rhs.promoted && lhs.newPiece == rhs.newPiece
     }
 }
 
