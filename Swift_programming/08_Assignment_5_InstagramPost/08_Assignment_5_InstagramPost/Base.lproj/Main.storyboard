@@ -28,7 +28,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="IoC-fz-i1X">
-                                <rect key="frame" x="39.333333333333343" y="581" width="314.33333333333326" height="115"/>
+                                <rect key="frame" x="39.333333333333343" y="562.66666666666663" width="314.33333333333326" height="115"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" role="primary" translatesAutoresizingMaskIntoConstraints="NO" id="pMz-QR-FzA" userLabel="LoginButton">
                                         <rect key="frame" x="0.0" y="0.0" width="314.33333333333331" height="50"/>
@@ -56,8 +56,8 @@
                                     <constraint firstAttribute="height" constant="115" id="vG4-t6-sNm"/>
                                 </constraints>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dvm-d9-OZK">
-                                <rect key="frame" x="39.333333333333343" y="371" width="314.33333333333326" height="110"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dvm-d9-OZK" userLabel="InputStack View">
+                                <rect key="frame" x="39.333333333333343" y="352.66666666666669" width="314.33333333333326" height="110"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User Name / email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0LC-Po-mgd">
                                         <rect key="frame" x="0.0" y="0.0" width="314.33333333333331" height="50"/>
@@ -81,7 +81,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TpF-mR-fRX" userLabel="ForgotPasswordButton">
-                                <rect key="frame" x="116.66666666666669" y="514" width="160" height="35"/>
+                                <rect key="frame" x="116.66666666666669" y="495.66666666666674" width="160" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="3Zs-Kz-09M"/>
                                 </constraints>
@@ -91,7 +91,7 @@
                                 </buttonConfiguration>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F6L-4B-5gu" userLabel="CreateAccountButton">
-                                <rect key="frame" x="125.33333333333333" y="746" width="142.33333333333337" height="35"/>
+                                <rect key="frame" x="125.33333333333333" y="727.66666666666663" width="142.33333333333337" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="iFS-2P-IyS"/>
                                 </constraints>
@@ -108,7 +108,7 @@
                             <constraint firstItem="TpF-mR-fRX" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="8Te-Ri-IMH"/>
                             <constraint firstItem="lWJ-7x-HAH" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Fj4-Nt-MRi"/>
                             <constraint firstItem="TpF-mR-fRX" firstAttribute="top" secondItem="dvm-d9-OZK" secondAttribute="bottom" constant="33" id="GfR-HD-LhN"/>
-                            <constraint firstItem="dvm-d9-OZK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="312" id="JE5-gS-Xgx"/>
+                            <constraint firstItem="dvm-d9-OZK" firstAttribute="top" secondItem="lWJ-7x-HAH" secondAttribute="bottom" constant="35" id="JE5-gS-Xgx"/>
                             <constraint firstItem="lWJ-7x-HAH" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="MMs-Xb-05Q"/>
                             <constraint firstItem="F6L-4B-5gu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SUg-oi-NVg"/>
                             <constraint firstItem="dvm-d9-OZK" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Vl4-DW-d0H"/>
