@@ -42,17 +42,38 @@
                                     <constraint firstAttribute="trailing" secondItem="zx2-nV-7fT" secondAttribute="trailing" id="Oy8-cG-2uH"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="sGQ-ez-QR5">
+                                <rect key="frame" x="0.0" y="88" width="393" height="730"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="TAv-rV-X98">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TAv-rV-X98" id="or5-6V-RK1">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xm2-8t-fSn" secondAttribute="trailing" id="2o9-3x-i53"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="sGQ-ez-QR5" secondAttribute="bottom" id="4Ty-no-kp1"/>
+                            <constraint firstItem="sGQ-ez-QR5" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="4ci-EW-fEe"/>
                             <constraint firstItem="xm2-8t-fSn" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="L24-72-nkp"/>
+                            <constraint firstItem="sGQ-ez-QR5" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="jAn-r0-Oli"/>
+                            <constraint firstItem="sGQ-ez-QR5" firstAttribute="top" secondItem="xm2-8t-fSn" secondAttribute="bottom" id="lvT-rq-hWa"/>
                             <constraint firstItem="xm2-8t-fSn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zEH-tx-VYR"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="heightConstraint" destination="Hwb-pJ-eRC" id="PDp-7W-7Iv"/>
+                        <outlet property="navBarView" destination="xm2-8t-fSn" id="5bh-wA-pcr"/>
+                        <outlet property="plusButton" destination="zx2-nV-7fT" id="Ngn-Ae-I8T"/>
+                        <outlet property="tableView" destination="sGQ-ez-QR5" id="6ye-4k-506"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
