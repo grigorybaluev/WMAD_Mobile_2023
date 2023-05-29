@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA6B81D62A1EDDCE004A65B3 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6B81D52A1EDDCE004A65B3 /* ResultsViewController.swift */; };
+		FA6B81DA2A1EE42F004A65B3 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6B81D92A1EE42E004A65B3 /* Question.swift */; };
+		FA6B81DC2A1EF08F004A65B3 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6B81DB2A1EF08F004A65B3 /* Answer.swift */; };
+		FA6B81E02A1EF3D5004A65B3 /* ActivitiesQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6B81DF2A1EF3D5004A65B3 /* ActivitiesQuestionViewController.swift */; };
+		FA6B81E22A1EF84B004A65B3 /* CarQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6B81E12A1EF84B004A65B3 /* CarQuestionViewController.swift */; };
 		FAB905D329F8B98400FD83C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB905D229F8B98400FD83C1 /* AppDelegate.swift */; };
 		FAB905D529F8B98400FD83C1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB905D429F8B98400FD83C1 /* SceneDelegate.swift */; };
 		FAB905D729F8B98400FD83C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB905D629F8B98400FD83C1 /* ViewController.swift */; };
@@ -20,6 +25,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA6B81D52A1EDDCE004A65B3 /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
+		FA6B81D92A1EE42E004A65B3 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		FA6B81DB2A1EF08F004A65B3 /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
+		FA6B81DF2A1EF3D5004A65B3 /* ActivitiesQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesQuestionViewController.swift; sourceTree = "<group>"; };
+		FA6B81E12A1EF84B004A65B3 /* CarQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarQuestionViewController.swift; sourceTree = "<group>"; };
 		FAB905CF29F8B98400FD83C1 /* 07_GuidedProject2_PersonalityQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 07_GuidedProject2_PersonalityQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAB905D229F8B98400FD83C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAB905D429F8B98400FD83C1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,7 +75,12 @@
 			isa = PBXGroup;
 			children = (
 				FAB905EA29FA031700FD83C1 /* FoodQuestionViewController.swift */,
+				FA6B81DF2A1EF3D5004A65B3 /* ActivitiesQuestionViewController.swift */,
+				FA6B81E12A1EF84B004A65B3 /* CarQuestionViewController.swift */,
+				FA6B81D92A1EE42E004A65B3 /* Question.swift */,
+				FA6B81DB2A1EF08F004A65B3 /* Answer.swift */,
 				FAB905EC29FA0EAF00FD83C1 /* QuestionsViewController.swift */,
+				FA6B81D52A1EDDCE004A65B3 /* ResultsViewController.swift */,
 				FAB905E829F9B00800FD83C1 /* QuestionsNavigationController.swift */,
 				FAB905D229F8B98400FD83C1 /* AppDelegate.swift */,
 				FAB905D429F8B98400FD83C1 /* SceneDelegate.swift */,
@@ -153,8 +168,13 @@
 				FAB905D729F8B98400FD83C1 /* ViewController.swift in Sources */,
 				FAB905ED29FA0EAF00FD83C1 /* QuestionsViewController.swift in Sources */,
 				FAB905E929F9B00800FD83C1 /* QuestionsNavigationController.swift in Sources */,
+				FA6B81E02A1EF3D5004A65B3 /* ActivitiesQuestionViewController.swift in Sources */,
+				FA6B81DA2A1EE42F004A65B3 /* Question.swift in Sources */,
 				FAB905E729F8BBBA00FD83C1 /* WelcomeViewController.swift in Sources */,
+				FA6B81D62A1EDDCE004A65B3 /* ResultsViewController.swift in Sources */,
 				FAB905D329F8B98400FD83C1 /* AppDelegate.swift in Sources */,
+				FA6B81DC2A1EF08F004A65B3 /* Answer.swift in Sources */,
+				FA6B81E22A1EF84B004A65B3 /* CarQuestionViewController.swift in Sources */,
 				FAB905D529F8B98400FD83C1 /* SceneDelegate.swift in Sources */,
 				FAB905EB29FA031700FD83C1 /* FoodQuestionViewController.swift in Sources */,
 			);

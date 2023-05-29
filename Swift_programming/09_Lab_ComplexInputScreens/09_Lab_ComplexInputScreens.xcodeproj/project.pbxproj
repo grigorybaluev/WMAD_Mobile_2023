@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FAC66EBC2A1AE72D00C68F02 /* AddRegistrationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC66EBB2A1AE72D00C68F02 /* AddRegistrationTableViewController.swift */; };
 		FADFEF492A0B0B36002B76B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADFEF482A0B0B36002B76B9 /* AppDelegate.swift */; };
 		FADFEF4B2A0B0B36002B76B9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADFEF4A2A0B0B36002B76B9 /* SceneDelegate.swift */; };
 		FADFEF502A0B0B36002B76B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FADFEF4E2A0B0B36002B76B9 /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FAC66EBB2A1AE72D00C68F02 /* AddRegistrationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRegistrationTableViewController.swift; sourceTree = "<group>"; };
 		FADFEF452A0B0B36002B76B9 /* 09_Lab_ComplexInputScreens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 09_Lab_ComplexInputScreens.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FADFEF482A0B0B36002B76B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FADFEF4A2A0B0B36002B76B9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				FADFEF482A0B0B36002B76B9 /* AppDelegate.swift */,
 				FADFEF4A2A0B0B36002B76B9 /* SceneDelegate.swift */,
 				FADFEF4E2A0B0B36002B76B9 /* Main.storyboard */,
+				FAC66EBB2A1AE72D00C68F02 /* AddRegistrationTableViewController.swift */,
 				FADFEF512A0B0B39002B76B9 /* Assets.xcassets */,
 				FADFEF532A0B0B39002B76B9 /* LaunchScreen.storyboard */,
 				FADFEF562A0B0B39002B76B9 /* Info.plist */,
@@ -142,6 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FADFEF492A0B0B36002B76B9 /* AppDelegate.swift in Sources */,
+				FAC66EBC2A1AE72D00C68F02 /* AddRegistrationTableViewController.swift in Sources */,
 				FADFEF5F2A0B0D9F002B76B9 /* RoomType.swift in Sources */,
 				FADFEF4B2A0B0B36002B76B9 /* SceneDelegate.swift in Sources */,
 				FADFEF5D2A0B0D48002B76B9 /* Registration.swift in Sources */,

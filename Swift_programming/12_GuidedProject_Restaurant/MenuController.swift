@@ -8,32 +8,29 @@
 import Foundation
 
 class MenuController {
+  static let shared = MenuController()
+  var order = Order() {
+    didSet {
+      NotificationCenter.default.post(name: MenuController.orderUpdatedNotification, object: nil)
+    }
+  }
+  static let orderUpdatedNotification = Notification.Name("MenuController.orderUpdated")
+
+  
   let baseURL = URL(string: "http://localhost:8080/")!
   typealias MinutesToPrepare = Int
   
   func fetchCategories() async throws -> [String] {
     print("fetchCategories start")
     let categoriesURL = baseURL.appendingPathComponent("categories")
-    print("categoriesURL")
-    print(categoriesURL)
-//    let (data, response) = try await URLSession.shared.data(from: categoriesURL)
-//
-//
-//    print("(data, response)")
-//
-//    guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-//      throw MenuControllerError.categoriesNotFound
-//    }
-//
-//    print("httpResponse")
-//
-//    let decoder = JSONDecoder()
-//    let categoriesResponse = try decoder.decode(CategoriesResponse.self, from: data)
-    
-//    print(categoriesResponse.categories)
-//    return categoriesResponse.categories
-    return ["appetizers","salads","soups","entrees","desserts","sandwiches"]
-    
+    let (data, response) = try await URLSession.shared.data(from: categoriesURL)
+    guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+      throw MenuControllerError.categoriesNotFound
+    }
+    let decoder = JSONDecoder()
+    let categoriesResponse = try decoder.decode(CategoriesResponse.self, from: data)
+    print(categoriesResponse.categories)
+    return categoriesResponse.categories
   }
   
   func fetchMenuItems(forCategory categoryName: String) async throws ->
