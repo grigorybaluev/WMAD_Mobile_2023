@@ -52,6 +52,7 @@ class HabitCollectionViewController: UICollectionViewController {
     dataSource = createDataSource()
     collectionView.dataSource = dataSource
     collectionView.collectionViewLayout = createLayout()
+    collectionView.register(NamedSectionHeaderView.self, forSupplementaryViewOfKind: SectionHeader.kind.identifier, withReuseIdentifier: SectionHeader.reuse.identifier)
   }
   
   func update() {
@@ -69,7 +70,7 @@ class HabitCollectionViewController: UICollectionViewController {
   }
   
   func updateCollectionView() {
-    let itemsBySection = model.habitsByName.values.reduce(into: [ViewModel.Section: [ViewModel.Item]]()) { partial, habit in
+    var itemsBySection = model.habitsByName.values.reduce(into: [ViewModel.Section: [ViewModel.Item]]()) { partial, habit in
       let item = habit
       let section: ViewModel.Section
       if model.favoriteHabits.contains(habit) {
@@ -80,6 +81,8 @@ class HabitCollectionViewController: UICollectionViewController {
       partial[section, default: []].append(item)
     }
     let sectionIDs = itemsBySection.keys.sorted()
+    itemsBySection = itemsBySection.mapValues { $0.sorted() }
+    
     dataSource.applySnapshotUsing(sectionIDs: sectionIDs, itemsBySection: itemsBySection)
   }
   
@@ -94,6 +97,18 @@ class HabitCollectionViewController: UICollectionViewController {
       
       return cell
     }
+    
+    dataSource.supplementaryViewProvider = { (collectionView, kind, indexPath) in
+      let header = collectionView.dequeueReusableSupplementaryView(ofKind: SectionHeader.kind.identifier, withReuseIdentifier: SectionHeader.reuse.identifier, for: indexPath) as! NamedSectionHeaderView
+      let section = dataSource.snapshot().sectionIdentifiers[indexPath.section]
+      switch section {
+      case .favorites:
+        header.nameLabel.text = "Favorites"
+      case .category(let category):
+        header.nameLabel.text = category.name
+      }
+      return header
+    }
     return dataSource
   }
   
@@ -107,10 +122,13 @@ class HabitCollectionViewController: UICollectionViewController {
     //    let group = NSCollectionLayoutGroup(layoutSize: groupSize)
     //      .horizontal
     
-    let section = NSCollectionLayoutSection(group: group)
-    section.contentInsets = NSDirectionalEdgeInsets(top: 0,
-                                                    leading: 10, bottom: 0, trailing: 10)
+    let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(36))
+    let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: SectionHeader.kind.identifier, alignment: .top)
+    sectionHeader.pinToVisibleBounds = true
     
+    let section = NSCollectionLayoutSection(group: group)
+    section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
+    section.boundarySupplementaryItems = [sectionHeader]
     return UICollectionViewCompositionalLayout(section: section)
   }
   
@@ -120,6 +138,27 @@ class HabitCollectionViewController: UICollectionViewController {
     update()
   }
   
+  override func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+    let config = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
+      let item = self.dataSource.itemIdentifier(for: indexPath)!
+      
+      let favoriteToggle = UIAction(title: self.model.favoriteHabits.contains(item) ? "Unfavorite" : "Favorite") { (action) in
+        Settings.shared.toggleFavorite(item)
+        self.updateCollectionView()
+      }
+      
+      return UIMenu(title: "", image: nil, identifier: nil, options: [], children: [favoriteToggle])
+    }
+    
+    return config
+  }
 }
 
-
+enum SectionHeader: String {
+  case kind = "SectionHeader"
+  case reuse = "HeaderView"
+  
+  var identifier: String {
+    return rawValue
+  }
+}
