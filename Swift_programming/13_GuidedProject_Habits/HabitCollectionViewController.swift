@@ -48,6 +48,10 @@ class HabitCollectionViewController: UICollectionViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    dataSource = createDataSource()
+    collectionView.dataSource = dataSource
+    collectionView.collectionViewLayout = createLayout()
   }
   
   func update() {
@@ -75,11 +79,45 @@ class HabitCollectionViewController: UICollectionViewController {
       }
       partial[section, default: []].append(item)
     }
-    
     let sectionIDs = itemsBySection.keys.sorted()
+    dataSource.applySnapshotUsing(sectionIDs: sectionIDs, itemsBySection: itemsBySection)
+  }
+  
+  func createDataSource() -> DataSourceType {
+    let dataSource = DataSourceType(collectionView: collectionView) {
+      (collectionView, indexPath, item) in
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Habit", for: indexPath) as! UICollectionViewListCell
+      
+      var content = cell.defaultContentConfiguration()
+      content.text = item.name
+      cell.contentConfiguration = content
+      
+      return cell
+    }
+    return dataSource
+  }
+  
+  func createLayout() -> UICollectionViewCompositionalLayout {
+    let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+    let item = NSCollectionLayoutItem(layoutSize: itemSize)
     
+    let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                           heightDimension: .absolute(44))
+    let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
+    //    let group = NSCollectionLayoutGroup(layoutSize: groupSize)
+    //      .horizontal
     
+    let section = NSCollectionLayoutSection(group: group)
+    section.contentInsets = NSDirectionalEdgeInsets(top: 0,
+                                                    leading: 10, bottom: 0, trailing: 10)
     
+    return UICollectionViewCompositionalLayout(section: section)
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    
+    update()
   }
   
 }
