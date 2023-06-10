@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA29C9492A352C56000EC296 /* MenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29C9482A352C56000EC296 /* MenuItemCell.swift */; };
 		FA3D9C992A16F8CF00E2234D /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3D9C982A16F8CF00E2234D /* CategoryTableViewController.swift */; };
 		FA3D9C9B2A16F8E400E2234D /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3D9C9A2A16F8E400E2234D /* MenuTableViewController.swift */; };
 		FA3D9C9D2A16F8EE00E2234D /* OrderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3D9C9C2A16F8EE00E2234D /* OrderTableViewController.swift */; };
@@ -20,9 +21,11 @@
 		FABAA50B2A16EC8800BFA03F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FABAA5092A16EC8800BFA03F /* Main.storyboard */; };
 		FABAA50D2A16EC8A00BFA03F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FABAA50C2A16EC8A00BFA03F /* Assets.xcassets */; };
 		FABAA5102A16EC8A00BFA03F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FABAA50E2A16EC8A00BFA03F /* LaunchScreen.storyboard */; };
+		FACD72FD2A33E67C00D967F6 /* OrderConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACD72FC2A33E67C00D967F6 /* OrderConfirmationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA29C9482A352C56000EC296 /* MenuItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemCell.swift; sourceTree = "<group>"; };
 		FA3D9C982A16F8CF00E2234D /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
 		FA3D9C9A2A16F8E400E2234D /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		FA3D9C9C2A16F8EE00E2234D /* OrderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTableViewController.swift; sourceTree = "<group>"; };
@@ -38,6 +41,7 @@
 		FABAA50C2A16EC8A00BFA03F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FABAA50F2A16EC8A00BFA03F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FABAA5112A16EC8A00BFA03F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FACD72FC2A33E67C00D967F6 /* OrderConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderConfirmationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,7 @@
 		FABAA4F72A16EC8800BFA03F = {
 			isa = PBXGroup;
 			children = (
+				FA29C9482A352C56000EC296 /* MenuItemCell.swift */,
 				FA3D9CA22A171C1D00E2234D /* ResponseModels.swift */,
 				FA3D9CA42A171C9F00E2234D /* Order.swift */,
 				FA3D9CA62A171D1300E2234D /* MenuController.swift */,
@@ -76,6 +81,7 @@
 			children = (
 				FABAA5032A16EC8800BFA03F /* AppDelegate.swift */,
 				FABAA5052A16EC8800BFA03F /* SceneDelegate.swift */,
+				FACD72FC2A33E67C00D967F6 /* OrderConfirmationViewController.swift */,
 				FABAA5092A16EC8800BFA03F /* Main.storyboard */,
 				FA3D9C9E2A16FADF00E2234D /* MenuItemDetailViewController.swift */,
 				FA3D9C982A16F8CF00E2234D /* CategoryTableViewController.swift */,
@@ -168,6 +174,8 @@
 				FA3D9C9D2A16F8EE00E2234D /* OrderTableViewController.swift in Sources */,
 				FABAA5042A16EC8800BFA03F /* AppDelegate.swift in Sources */,
 				FABAA5062A16EC8800BFA03F /* SceneDelegate.swift in Sources */,
+				FA29C9492A352C56000EC296 /* MenuItemCell.swift in Sources */,
+				FACD72FD2A33E67C00D967F6 /* OrderConfirmationViewController.swift in Sources */,
 				FA3D9C992A16F8CF00E2234D /* CategoryTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

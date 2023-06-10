@@ -58,7 +58,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuItem" id="dnR-GV-mbt">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuItem" id="dnR-GV-mbt" customClass="MenuItemCell" customModule="_2_GuidedProject_Restaurant" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dnR-GV-mbt" id="HrH-OM-yqt">
@@ -167,7 +167,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Order" textLabel="LSJ-pO-n7d" detailTextLabel="Zqc-lD-mZi" style="IBUITableViewCellStyleValue1" id="iHv-hW-AZn">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Order" textLabel="LSJ-pO-n7d" detailTextLabel="Zqc-lD-mZi" style="IBUITableViewCellStyleValue1" id="iHv-hW-AZn" customClass="MenuItemCell" customModule="_2_GuidedProject_Restaurant" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iHv-hW-AZn" id="otd-15-cTx">
@@ -190,6 +190,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="bC0-Be-4E2" kind="modal" identifier="confirmOrder" destinationCreationSelector="confirmOrder:" id="Xeg-yp-5EF"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -197,11 +200,75 @@
                             <outlet property="delegate" destination="atI-cI-Sim" id="bU2-BH-9xD"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="wGN-rN-TSh"/>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="wGN-rN-TSh">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="arV-uG-lS9">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="cvw-fT-VEy">
+                                <rect key="frame" x="290" y="5" width="87" height="34.333333333333336"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Submit"/>
+                                <connections>
+                                    <action selector="submitTapped:" destination="atI-cI-Sim" eventType="touchUpInside" id="Bd8-QM-XDN"/>
+                                </connections>
+                            </button>
+                            <connections>
+                                <action selector="submitTapped:" destination="atI-cI-Sim" id="mqW-fw-fyp"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qKB-ta-VEh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2854.1984732824426" y="675.35211267605632"/>
+        </scene>
+        <!--Order Confirmation View Controller-->
+        <scene sceneID="Qcn-OJ-nua">
+            <objects>
+                <viewController id="bC0-Be-4E2" customClass="OrderConfirmationViewController" customModule="_2_GuidedProject_Restaurant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zyk-Pd-qtT">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="p8b-qI-1x0">
+                                <rect key="frame" x="30" y="349.33333333333331" width="333" height="84.333333333333314"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxD-Kl-qdV">
+                                        <rect key="frame" x="0.0" y="0.0" width="333" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="gz1-QD-oKR"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4jc-C2-jQS">
+                                        <rect key="frame" x="0.0" y="50" width="333" height="34.333333333333343"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Dismiss"/>
+                                        <connections>
+                                            <segue destination="JWY-yk-gtf" kind="unwind" identifier="dismissConfirmation" unwindAction="unwindToOrderListWithSegue:" id="MNR-YF-ccK"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6ji-D5-RRN"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="p8b-qI-1x0" firstAttribute="leading" secondItem="6ji-D5-RRN" secondAttribute="leading" constant="30" id="8pA-Ab-xOx"/>
+                            <constraint firstItem="6ji-D5-RRN" firstAttribute="trailing" secondItem="p8b-qI-1x0" secondAttribute="trailing" constant="30" id="EfH-P2-cUB"/>
+                            <constraint firstItem="p8b-qI-1x0" firstAttribute="centerX" secondItem="zyk-Pd-qtT" secondAttribute="centerX" id="Wc2-ro-0s1"/>
+                            <constraint firstItem="p8b-qI-1x0" firstAttribute="centerY" secondItem="zyk-Pd-qtT" secondAttribute="centerY" id="m8l-Em-LTm"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="confirmationLabel" destination="pxD-Kl-qdV" id="8ER-nL-SqW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bFD-UO-hyM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="JWY-yk-gtf" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="3624" y="675"/>
         </scene>
         <!--Your Order-->
         <scene sceneID="wOV-Mp-quG">
