@@ -7,9 +7,9 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+private let reuseIdentifier = "PedalCell"
 
-class CollectionViewController: UICollectionViewController {
+class HomeCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
