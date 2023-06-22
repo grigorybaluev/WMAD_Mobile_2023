@@ -9,7 +9,7 @@ import UIKit
 
 class DetailTableViewController: UITableViewController {
   var pedal: Pedal!
-  var knob: UIImageView!
+  var knob1: UIImageView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -62,7 +62,7 @@ class DetailTableViewController: UITableViewController {
       tableView.register(PedalImageCell.self, forCellReuseIdentifier: "ImageCell")
       let cell = tableView.dequeueReusableCell(withIdentifier: "ImageCell", for: indexPath) as! PedalImageCell
       cell.pedal = pedal
-      knob = cell.knob
+      knob1 = cell.knob1
       cell.updateImage()
       cell.backgroundColor = .white
       cell.pedalCellImageView.image = pedal.image
@@ -75,9 +75,7 @@ class DetailTableViewController: UITableViewController {
       tableView.register(ControlTableViewCell.self, forCellReuseIdentifier: "ControlCell")
       let cell = tableView.dequeueReusableCell(withIdentifier: "ControlCell", for: indexPath) as! ControlTableViewCell
       cell.pedal = pedal
-//      let imageCell = tableView.dequeueReusableCell(withIdentifier: "ImageCell", for: indexPath) as! PedalImageCell
       cell.delegate = self
-      cell.knob = knob
       cell.addControls()
       switch pedal.id {
       case 0:
@@ -133,8 +131,9 @@ class DetailTableViewController: UITableViewController {
       }
     } else {
       switch pedal.id {
-//      case 0:
-//        print("Count To 5")
+      case 0:
+        print("Count To 5")
+        return 220
 //      case 1:
 //        print("Too Positive")
 //      case 2:
@@ -159,18 +158,31 @@ class DetailTableViewController: UITableViewController {
 }
 
 extension DetailTableViewController: ControlTableViewCellDelegate {
-  func requestImageAngleUpdate(_ cell: ControlTableViewCell) {
+  func requestImageAngleUpdate(_ cell: ControlTableViewCell, _ targetKnob: TargetKnob) {
     guard let indexPath = tableView.indexPath(for: cell) else {
       return
     }
     
-    let sliderCell = tableView.cellForRow(at: indexPath) as? ControlTableViewCell
-    let angle = sliderCell?.volKnobAngle ?? 0.0
+    let controlCell = tableView.cellForRow(at: indexPath) as? ControlTableViewCell
     
     // Update the angle of the image in the target table view cell
     let targetIndexPath = IndexPath(row: indexPath.row-1, section: indexPath.section)
     let targetCell = tableView.cellForRow(at: targetIndexPath) as? PedalImageCell
-    targetCell?.updateImageRotationAngle(angle)
+    targetCell?.updateImageRotationAngle(controlCell!, targetKnob)
+  }
+  func requestSwitchUpdate(_ cell: ControlTableViewCell, _ switchTarget: SwitchTarget) {
+    print("switch state is ", cell.switch1.state)
+    guard let indexPath = tableView.indexPath(for: cell) else {
+      return
+    }
     
+    let controlCell = tableView.cellForRow(at: indexPath) as? ControlTableViewCell
+    
+    // Update the angle of the image in the target table view cell
+    let targetIndexPath = IndexPath(row: indexPath.row-1, section: indexPath.section)
+    let targetCell = tableView.cellForRow(at: targetIndexPath) as? PedalImageCell
+    targetCell?.updateSwitch(controlCell!, switchTarget)
   }
 }
+
+

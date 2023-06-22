@@ -3,9 +3,17 @@ import UIKit
 //class ControlTableViewCell: UITableViewCell {
 class ControlTableViewCell: UITableViewCell, ControlTableViewCellDelegate {
   var pedal: Pedal!
-  var knob: UIImageView!
-  var volSlider = UISlider()
-  var volKnobAngle: Float = 0.0
+  var slider1 = UISlider()
+  var slider2 = UISlider()
+  var slider3 = UISlider()
+  var slider4 = UISlider()
+  var switch1 = UISwitch()
+
+  var knob1Angle: Float = 0.0
+  var knob2Angle: Float = 0.0
+  var knob3Angle: Float = 0.0
+  var knob4Angle: Float = 0.0
+  var switch1state: Bool = false
   var controlCell: ControlTableViewCell?
   weak var delegate: ControlTableViewCellDelegate?
   
@@ -37,6 +45,141 @@ class ControlTableViewCell: UITableViewCell, ControlTableViewCellDelegate {
     case 0:
       print("Count To 5")
       
+      let mixLabel = UILabel()
+      mixLabel.text = "MIX"
+      mixLabel.translatesAutoresizingMaskIntoConstraints = false
+      mixLabel.font = UIFont(name: "Helvetica Neue Bold", size: 20)
+      
+      let mixSlider = UISlider()
+      mixSlider.translatesAutoresizingMaskIntoConstraints = false
+      mixSlider.minimumValue = Float.pi * (-0.9)
+      mixSlider.maximumValue = Float.pi * 0.9
+      mixSlider.setValue(0, animated: false)
+      mixSlider.addTarget(self, action: #selector(CountMixSliderValueChanged(_:)), for: .valueChanged)
+      slider1 = mixSlider
+      
+      let dir1Label = UILabel()
+      dir1Label.text = "DIR 1"
+      dir1Label.translatesAutoresizingMaskIntoConstraints = false
+      dir1Label.font = UIFont(name: "Helvetica Neue Bold", size: 20)
+      
+      let dir1Slider = UISlider()
+      dir1Slider.translatesAutoresizingMaskIntoConstraints = false
+      dir1Slider.minimumValue = Float.pi * (-0.9)
+      dir1Slider.maximumValue = Float.pi * 0.9
+      dir1Slider.setValue(0, animated: false)
+      dir1Slider.addTarget(self, action: #selector(CountDir1SliderValueChanged(_:)), for: .valueChanged)
+      slider2 = dir1Slider
+      
+      let lenLabel = UILabel()
+      lenLabel.text = "LEN"
+      lenLabel.translatesAutoresizingMaskIntoConstraints = false
+      lenLabel.font = UIFont(name: "Helvetica Neue Bold", size: 20)
+      
+      let lenSlider = UISlider()
+      lenSlider.translatesAutoresizingMaskIntoConstraints = false
+      lenSlider.minimumValue = Float.pi * (-0.9)
+      lenSlider.maximumValue = Float.pi * 0.9
+      lenSlider.setValue(0, animated: false)
+      lenSlider.addTarget(self, action: #selector(CountLenSliderValueChanged(_:)), for: .valueChanged)
+      slider3 = lenSlider
+      
+      let fbkLabel = UILabel()
+      fbkLabel.text = "FBK"
+      fbkLabel.translatesAutoresizingMaskIntoConstraints = false
+      fbkLabel.font = UIFont(name: "Helvetica Neue Bold", size: 20)
+      
+      let fbkSlider = UISlider()
+      fbkSlider.translatesAutoresizingMaskIntoConstraints = false
+      fbkSlider.minimumValue = Float.pi * (-0.9)
+      fbkSlider.maximumValue = Float.pi * 0.9
+      fbkSlider.setValue(0, animated: false)
+      fbkSlider.addTarget(self, action: #selector(CountFbkSliderValueChanged(_:)), for: .valueChanged)
+      slider4 = fbkSlider
+      
+      let onOffLabel = UILabel()
+      onOffLabel.text = "ON/OFF"
+      onOffLabel.translatesAutoresizingMaskIntoConstraints = false
+      onOffLabel.font = UIFont(name: "Helvetica Neue Bold", size: 20)
+      
+      lazy var onOffSwitch: UISwitch = {
+        let onOffSwitch = UISwitch()
+        onOffSwitch.isOn = false
+        onOffSwitch.translatesAutoresizingMaskIntoConstraints = false
+        onOffSwitch.addTarget(self, action: #selector(onOffSwitchValueChanged(_:)), for: .valueChanged)
+        return onOffSwitch
+      }()
+      
+      let horStackView1 = UIStackView()
+      horStackView1.axis = .horizontal
+      horStackView1.addArrangedSubview(mixLabel)
+      horStackView1.addArrangedSubview(mixSlider)
+      horStackView1.translatesAutoresizingMaskIntoConstraints = false
+      horStackView1.alignment = .fill
+      horStackView1.distribution = .fill
+      horStackView1.spacing = 25
+      
+      let horStackView2 = UIStackView()
+      horStackView2.axis = .horizontal
+      horStackView2.addArrangedSubview(dir1Label)
+      horStackView2.addArrangedSubview(dir1Slider)
+      horStackView2.translatesAutoresizingMaskIntoConstraints = false
+      horStackView2.alignment = .fill
+      horStackView2.distribution = .fill
+      horStackView2.spacing = 25
+      
+      let horStackView3 = UIStackView()
+      horStackView3.axis = .horizontal
+      horStackView3.addArrangedSubview(lenLabel)
+      horStackView3.addArrangedSubview(lenSlider)
+      horStackView3.translatesAutoresizingMaskIntoConstraints = false
+      horStackView3.alignment = .fill
+      horStackView3.distribution = .fill
+      horStackView3.spacing = 25
+      
+      let horStackView4 = UIStackView()
+      horStackView4.axis = .horizontal
+      horStackView4.addArrangedSubview(fbkLabel)
+      horStackView4.addArrangedSubview(fbkSlider)
+      horStackView4.translatesAutoresizingMaskIntoConstraints = false
+      horStackView4.alignment = .fill
+      horStackView4.distribution = .fill
+      horStackView4.spacing = 25
+      
+      let horStackView5 = UIStackView()
+      horStackView5.axis = .horizontal
+      horStackView5.addArrangedSubview(onOffLabel)
+      horStackView5.addArrangedSubview(onOffSwitch)
+      horStackView5.translatesAutoresizingMaskIntoConstraints = false
+      horStackView5.alignment = .fill
+      horStackView5.distribution = .fill
+      horStackView5.spacing = 25
+      
+      let vertStackView = UIStackView()
+      vertStackView.axis = .vertical
+      vertStackView.addArrangedSubview(horStackView1)
+      vertStackView.addArrangedSubview(horStackView2)
+      vertStackView.addArrangedSubview(horStackView3)
+      vertStackView.addArrangedSubview(horStackView4)
+      vertStackView.addArrangedSubview(horStackView5)
+      contentView.addSubview(vertStackView)
+      vertStackView.translatesAutoresizingMaskIntoConstraints = false
+      vertStackView.alignment = .fill
+      vertStackView.distribution = .fillEqually
+      
+      let labelWidth = CGFloat(85)
+      mixLabel.widthAnchor.constraint(equalToConstant: labelWidth).isActive = true
+      dir1Label.widthAnchor.constraint(equalToConstant: labelWidth).isActive = true
+      lenLabel.widthAnchor.constraint(equalToConstant: labelWidth).isActive = true
+      fbkLabel.widthAnchor.constraint(equalToConstant: labelWidth).isActive = true
+      onOffLabel.widthAnchor.constraint(equalToConstant: labelWidth).isActive = true
+      
+      vertStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
+      vertStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
+      vertStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
+      vertStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
+      
+      
     case 1:
       print("Too Positive")
       
@@ -51,16 +194,13 @@ class ControlTableViewCell: UITableViewCell, ControlTableViewCellDelegate {
       volLabel.translatesAutoresizingMaskIntoConstraints = false
       volLabel.font = UIFont(name: "Helvetica Neue Bold", size: 20)
       
-//      let volSlider = UISlider()
-      volSlider = UISlider()
+      let volSlider = UISlider()
       volSlider.translatesAutoresizingMaskIntoConstraints = false
-//      volSlider.minimumValue = 0
-//      volSlider.maximumValue = 100
-//      volSlider.setValue(50, animated: false)
-      volSlider.minimumValue = Float.pi * (-1)
-      volSlider.maximumValue = Float.pi
+      volSlider.minimumValue = Float.pi * (-0.9)
+      volSlider.maximumValue = Float.pi * 0.9
       volSlider.setValue(0, animated: false)
-      volSlider.addTarget(self, action: #selector(volSliderValueChanged(_:)), for: .valueChanged)
+      volSlider.addTarget(self, action: #selector(YourVolSliderValueChanged(_:)), for: .valueChanged)
+      slider1 = volSlider
       
       let toneLabel = UILabel()
       toneLabel.text = "TONE"
@@ -69,16 +209,16 @@ class ControlTableViewCell: UITableViewCell, ControlTableViewCellDelegate {
       
       let toneSlider = UISlider()
       toneSlider.translatesAutoresizingMaskIntoConstraints = false
-      toneSlider.minimumValue = 0
-      toneSlider.maximumValue = 100
-      toneSlider.setValue(50, animated: false)
+      toneSlider.minimumValue = Float.pi * (-0.9)
+      toneSlider.maximumValue = Float.pi * 0.9
+      toneSlider.setValue(0, animated: false)
+      toneSlider.addTarget(self, action: #selector(YourToneSliderValueChanged(_:)), for: .valueChanged)
       
       let onOffLabel = UILabel()
       onOffLabel.text = "ON/OFF"
       onOffLabel.translatesAutoresizingMaskIntoConstraints = false
       onOffLabel.font = UIFont(name: "Helvetica Neue Bold", size: 20)
       
-//      let onOffSwitch = UISwitch()
       lazy var onOffSwitch: UISwitch = {
         let onOffSwitch = UISwitch()
         onOffSwitch.isOn = false
@@ -95,7 +235,6 @@ class ControlTableViewCell: UITableViewCell, ControlTableViewCellDelegate {
       horStackView1.alignment = .fill
       horStackView1.distribution = .fill
       horStackView1.spacing = 25
-//      horStackView1.backgroundColor = .red
       
       let horStackView2 = UIStackView()
       horStackView2.axis = .horizontal
@@ -105,7 +244,6 @@ class ControlTableViewCell: UITableViewCell, ControlTableViewCellDelegate {
       horStackView2.alignment = .fill
       horStackView2.distribution = .fill
       horStackView2.spacing = 25
-//      horStackView2.backgroundColor = .orange
       
       let horStackView3 = UIStackView()
       horStackView3.axis = .horizontal
@@ -115,7 +253,6 @@ class ControlTableViewCell: UITableViewCell, ControlTableViewCellDelegate {
       horStackView3.alignment = .fill
       horStackView3.distribution = .fill
       horStackView3.spacing = 25
-//      horStackView3.backgroundColor = .purple
       
       let vertStackView = UIStackView()
       vertStackView.axis = .vertical
@@ -132,23 +269,10 @@ class ControlTableViewCell: UITableViewCell, ControlTableViewCellDelegate {
       toneLabel.widthAnchor.constraint(equalToConstant: labelWidth).isActive = true
       onOffLabel.widthAnchor.constraint(equalToConstant: labelWidth).isActive = true
       
-//      horStackView1.leadingAnchor.constraint(equalTo: vertStackView.leadingAnchor, constant: 30).isActive = true
-//      horStackView1.trailingAnchor.constraint(equalTo: vertStackView.trailingAnchor, constant: -30).isActive = true
-//      horStackView1.topAnchor.constraint(equalTo: vertStackView.topAnchor, constant: 10).isActive = true
-//      horStackView1.bottomAnchor.constraint(equalTo: vertStackView.bottomAnchor, constant: -10).isActive = true
-//
-//      horStackView2.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30).isActive = true
-//      horStackView2.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -30).isActive = true
-//      horStackView2.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
-//      horStackView2.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
-      
       vertStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
       vertStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
       vertStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
       vertStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
-      
-//      onOffSwitch.centerYAnchor.constraint(equalTo: horStackView3.centerYAnchor).isActive = true
-//      onOffSwitch.leadingAnchor.constraint(equalTo: horStackView3.leadingAnchor).isActive = true
       
     default:
       print("no pedal")
@@ -156,40 +280,63 @@ class ControlTableViewCell: UITableViewCell, ControlTableViewCellDelegate {
   }
   
   @objc func onOffSwitchValueChanged(_ sender: UISwitch) {
+    delegate?.requestSwitchUpdate(self, .YourOnOffLight)
     if sender.isOn {
       // Switch is turned on
-      print("Switch is ON")
+      print("Switch1 is ON")
+      switch1state = true
     } else {
       // Switch is turned off
-      print("Switch is OFF")
+      print("Switch1 is OFF")
+      switch1state = false
     }
   }
   
-  @objc func volSliderValueChanged(_ sender: UISlider) {
-    
-    
-    delegate?.requestImageAngleUpdate(self)
-//    let angle = sender.value // Get the current value of the slider
-    volKnobAngle = sender.value // Get the current value of the slider
-    print(volKnobAngle)
-//    knobImage.transform = CGAffineTransform(rotationAngle: CGFloat(angle))
-    
-//    updateImageRotationAngle(angle)
+  @objc func YourVolSliderValueChanged(_ sender: UISlider) {
+    delegate?.requestImageAngleUpdate(self, .YoureVolKnob)
+    knob1Angle = sender.value
+    print("knob 1 angle: ", knob1Angle)
   }
   
-  func requestImageAngleUpdate(_ cell: ControlTableViewCell) {
+  @objc func YourToneSliderValueChanged(_ sender: UISlider) {
+    delegate?.requestImageAngleUpdate(self, .YoureToneKnob)
+    knob2Angle = sender.value
+    print("knob 2 angle: ", knob2Angle)
+  }
+  
+  @objc func CountMixSliderValueChanged(_ sender: UISlider) {
+    delegate?.requestImageAngleUpdate(self, .CountKnob1)
+    knob1Angle = sender.value
+  }
+  
+  @objc func CountDir1SliderValueChanged(_ sender: UISlider) {
+    delegate?.requestImageAngleUpdate(self, .CountKnob2)
+    knob2Angle = sender.value
+  }
+  
+  @objc func CountLenSliderValueChanged(_ sender: UISlider) {
+    delegate?.requestImageAngleUpdate(self, .CountKnob3)
+    knob3Angle = sender.value
+  }
+  
+  @objc func CountFbkSliderValueChanged(_ sender: UISlider) {
+    delegate?.requestImageAngleUpdate(self, .CountKnob4)
+    knob4Angle = sender.value
+  }
+  
+  func requestImageAngleUpdate(_ cell: ControlTableViewCell, _ targetKnob: TargetKnob) {
     print("request image angle update")
   }
   
-//  func updateImageRotationAngle(_ newAngle: Float) {
-//    knobImage.transform = CGAffineTransform(rotationAngle: CGFloat(newAngle))
-//    volSlider.value = newAngle
-//  }
+  func requestSwitchUpdate(_ cell: ControlTableViewCell, _ switchTarget: SwitchTarget) {
+    print("request switch update")
+  }
 }
 
 
 protocol ControlTableViewCellDelegate: AnyObject {
-    func requestImageAngleUpdate(_ cell: ControlTableViewCell)
+  func requestImageAngleUpdate(_ cell: ControlTableViewCell, _ targetKnob: TargetKnob)
+  func requestSwitchUpdate(_ cell: ControlTableViewCell, _ switchTarget: SwitchTarget)
 }
 
 
