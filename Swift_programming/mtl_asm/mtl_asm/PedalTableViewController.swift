@@ -70,7 +70,7 @@ class PedalTableViewController: UITableViewController {
     case 3:
       print("Your and You're")
       titleLabel.trailingAnchor.constraint(equalTo: cell.centerXAnchor, constant: 80).isActive = true
-      titleLabel.topAnchor.constraint(equalTo: cell.topAnchor, constant: 25).isActive = true
+      titleLabel.topAnchor.constraint(equalTo: cell.topAnchor, constant: 20).isActive = true
       
     default:
       print("no pedal")

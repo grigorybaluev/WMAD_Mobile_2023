@@ -15,6 +15,7 @@
 		FA2A82232A3919F400013020 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A82222A3919F400013020 /* DetailViewController.swift */; };
 		FA4364BE2A3A58370028071C /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4364BD2A3A58370028071C /* DetailTableViewController.swift */; };
 		FA4364C02A3A61D50028071C /* PedalImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4364BF2A3A61D50028071C /* PedalImageCell.swift */; };
+		FA6DB3022A44F59700351D3A /* InfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6DB3012A44F59700351D3A /* InfoTableViewController.swift */; };
 		FAC5F7332A3A7346004253C3 /* TestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC5F7322A3A7346004253C3 /* TestTableViewController.swift */; };
 		FAC5F7352A3A74C7004253C3 /* TestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC5F7342A3A74C7004253C3 /* TestTableViewCell.swift */; };
 		FAC5F7372A3A7BAC004253C3 /* ControlTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC5F7362A3A7BAC004253C3 /* ControlTableViewCell.swift */; };
@@ -38,6 +39,7 @@
 		FA2A82222A3919F400013020 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		FA4364BD2A3A58370028071C /* DetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
 		FA4364BF2A3A61D50028071C /* PedalImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedalImageCell.swift; sourceTree = "<group>"; };
+		FA6DB3012A44F59700351D3A /* InfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewController.swift; sourceTree = "<group>"; };
 		FAC5F7322A3A7346004253C3 /* TestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTableViewController.swift; sourceTree = "<group>"; };
 		FAC5F7342A3A74C7004253C3 /* TestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTableViewCell.swift; sourceTree = "<group>"; };
 		FAC5F7362A3A7BAC004253C3 /* ControlTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlTableViewCell.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				FACD72E02A326BB900D967F6 /* AppDelegate.swift */,
 				FACD72E22A326BB900D967F6 /* SceneDelegate.swift */,
 				FACD72E62A326BB900D967F6 /* Main.storyboard */,
+				FA6DB3012A44F59700351D3A /* InfoTableViewController.swift */,
 				FAC5F7382A424990004253C3 /* SettingsTableViewController.swift */,
 				FAC5F7322A3A7346004253C3 /* TestTableViewController.swift */,
 				FAC5F7342A3A74C7004253C3 /* TestTableViewCell.swift */,
@@ -194,6 +197,7 @@
 				FAC5F7332A3A7346004253C3 /* TestTableViewController.swift in Sources */,
 				FA2A821D2A38433000013020 /* HomeTableViewController.swift in Sources */,
 				FAC5F7392A424990004253C3 /* SettingsTableViewController.swift in Sources */,
+				FA6DB3022A44F59700351D3A /* InfoTableViewController.swift in Sources */,
 				FA2A82232A3919F400013020 /* DetailViewController.swift in Sources */,
 				FA134F5B2A37E31C00D56104 /* Pedal.swift in Sources */,
 				FACD72E32A326BB900D967F6 /* SceneDelegate.swift in Sources */,
