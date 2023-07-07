@@ -93,8 +93,7 @@ class MenuTableViewController: UITableViewController {
     imageLoadTasks[indexPath] = Task.init {
       if let image = try? await
           MenuController.shared.fetchImage(from: menuItem.imageURL) {
-        if let currentIndexPath = self.tableView.indexPath(for: cell),
-           currentIndexPath == indexPath {
+        if let currentIndexPath = self.tableView.indexPath(for: cell), currentIndexPath == indexPath {
           cell.image = image
         }
       }
