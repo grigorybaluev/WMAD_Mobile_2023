@@ -14,3 +14,8 @@ print("Hello, World!")
 print(evaluate("7+2"))
 print(evaluate("((7+2)+1)"))
 
+
+//printDecimal(n: 5)
+
+
+permutations(str: "park")
