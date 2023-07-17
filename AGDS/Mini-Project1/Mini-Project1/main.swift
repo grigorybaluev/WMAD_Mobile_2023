@@ -67,4 +67,4 @@ func printContentHelper(_ currentPath: String, _ count: inout Int, _ fileCount: 
 }
 
 //printContent(currentDirectoryPath)
-//printContent()
+printContent()
