@@ -21,40 +21,44 @@ import Foundation
 //permutations(str: "park")
 
 
-var nums = Bag<Int>()
+//var nums = Bag<Int>()
+//
+//for i in 0..<10 {
+//  nums.add(i)
+//}
+//
+//for num in nums {
+//  print(num)
+//}
+//
+//print()
+//
+//var letters = Stack<String>()
+//
+//letters.push("A")
+//letters.push("B")
+//letters.push("C")
+//print(letters.pop()!)
+//print(letters.pop()!)
+//print(letters.pop()!)
+//
+//print()
+//
+//var strings = Queue<String>()
+//
+//strings.enqueue("A")
+//strings.enqueue("B")
+//strings.enqueue("C")
+//
+//print(strings.peek()!)
+//print(strings.dequeue()!)
+//print(strings.peek()!)
+//print(strings.dequeue()!)
+//print(strings.peek()!)
 
-for i in 0..<10 {
-  nums.add(i)
-}
 
-for num in nums {
-  print(num)
-}
+//adjacencyListDFS()
+//connectedComponents()
 
-print()
-
-var letters = Stack<String>()
-
-letters.push("A")
-letters.push("B")
-letters.push("C")
-print(letters.pop()!)
-print(letters.pop()!)
-print(letters.pop()!)
-
-print()
-
-var strings = Queue<String>()
-
-strings.enqueue("A")
-strings.enqueue("B")
-strings.enqueue("C")
-
-print(strings.peek()!)
-print(strings.dequeue()!)
-print(strings.peek()!)
-print(strings.dequeue()!)
-print(strings.peek()!)
-
-
-
+cyclicPermutation()
+//repeatingSequence(n: 57, p: 2)
