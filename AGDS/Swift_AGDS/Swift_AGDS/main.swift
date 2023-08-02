@@ -60,5 +60,34 @@ import Foundation
 //adjacencyListDFS()
 //connectedComponents()
 
-cyclicPermutation()
+//cyclicPermutation()
 //repeatingSequence(n: 57, p: 2)
+
+
+//NaryTreePreorderSolution(tree: [1,nil,3,2,4,nil,5,6])
+
+//treeTraversal()
+
+//7
+//A B C
+//B D .
+//C E F
+//E . .
+//F . G
+//D . .
+//G . .
+
+//Solution().preorder(<#T##root: Node?##Node?#>)
+
+//let edges: [[Int]] = [[1, 6],
+//                      [6, 3],
+//                      [3, 5],
+//                      [4, 1],
+//                      [2, 4],
+//                      [4, 7]]
+//let parentArray = createParentArray(edges: edges)
+//print(parentArray) // Output: [-1, 0, 1, 1, 2, 2]
+
+//whosMyParent()
+findDiameter()
+
