@@ -169,7 +169,6 @@ func whosMyParent() {
   
   while myEdges.count > 0 {
     for edge in myEdges {
-      
       if edge.contains(root) {
         for node in edge {
           if node != root {
@@ -248,5 +247,94 @@ func findDiameter() {
   print(diameter)
 }
 
-
+func findLCA() {
+  var edges = [[Int]]()
+  var pairs = [(Int, Int)]()
+  var arrayLCA = [Int]()
+  
+  for _ in 0..<Int(readLine()!)!-1 {
+    edges.append(readLine()!.split(separator: " ").map( {Int($0)!} ))
+  }
+  
+  for _ in 0..<Int(readLine()!)! {
+    let pairArray = readLine()!.split(separator: " ").map( {Int($0)!} )
+    pairs.append((pairArray[0], pairArray[1]))
+  }
+  
+  var childrenDict: [Int: [Int]] = [1: []]
+  var parentDict: [Int: Int] = [1: 0]
+  var root = 1
+  let parentsToCheck = Queue<Int>()
+  
+  while edges.count > 0 {
+    for edge in edges {
+      if edge.contains(root) {
+        for node in edge {
+          if node != root {
+            if childrenDict[root] == nil {
+              childrenDict[root] = []
+            }
+            if parentDict[node] == nil {
+              parentDict[node] = root
+            }
+            childrenDict[root]?.append(node)
+            parentsToCheck.enqueue(item: node)
+            edges.remove(at: edges.firstIndex(of: edge)!)
+          }
+        }
+      }
+    }
+    root = parentsToCheck.dequeue()!
+  }
+  
+//  print(childrenDict)
+  
+  for pair in pairs {
+    let (a, b) = pair
+    
+    func getParents(node: Int, parentDict: [Int: Int], ancestors: inout [Int])  {
+      if parentDict[node] == nil {
+        return
+      } else {
+        ancestors.append(parentDict[node]!)
+        getParents(node: parentDict[node]!, parentDict: parentDict, ancestors: &ancestors)
+//        return ancestors
+      }
+    }
+    
+    var aAncestors = [Int]()
+    var bAncestors = [Int]()
+    getParents(node: a, parentDict: parentDict, ancestors: &aAncestors)
+    getParents(node: b, parentDict: parentDict, ancestors: &bAncestors)
+    aAncestors.insert(a, at: 0)
+    bAncestors.insert(b, at: 0)
+    
+//    print(a, aAncestors)
+//    print(b, bAncestors)
+    
+    var LCA = Int()
+    while aAncestors[aAncestors.count-1] == bAncestors[bAncestors.count-1] {
+//      print("check")
+//      print(aAncestors)
+//      print(bAncestors)
+//      print(aAncestors[aAncestors.count-1], aAncestors.count-1)
+      LCA = aAncestors[aAncestors.count-1]
+      aAncestors.popLast()
+      bAncestors.popLast()
+      if aAncestors.count == 0 || bAncestors.count == 0 {
+        break
+      }
+    }
+    arrayLCA.append(LCA)
+//    print("lca: ", LCA)
+//    print()
+    
+    
+    
+  }
+  print()
+  for i in arrayLCA {
+    print(i)
+  }
+}
 
