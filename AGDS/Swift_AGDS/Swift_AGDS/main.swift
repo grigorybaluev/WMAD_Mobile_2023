@@ -89,5 +89,12 @@ import Foundation
 //print(parentArray) // Output: [-1, 0, 1, 1, 2, 2]
 
 //whosMyParent()
-findDiameter()
+//findDiameter()
+//findLCA()
+//findRealSushi()
+//tomatoFarm()
 
+//tomatoFarm()
+
+
+bridges()
