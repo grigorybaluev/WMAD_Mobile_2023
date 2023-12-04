@@ -14,6 +14,7 @@ struct Pedal {
   let detailText: String
   let image: UIImage
   let color: UIColor
+  let textColor: UIColor
 }
 
 //struct Pedal: Codable {

@@ -1,10 +1,3 @@
-//
-//  DetailTableViewController.swift
-//  mtl_asm
-//
-//  Created by MacBook on 14.06.2023.
-//
-
 import UIKit
 
 class DetailTableViewController: UITableViewController {
@@ -15,39 +8,7 @@ class DetailTableViewController: UITableViewController {
     super.viewDidLoad()
     print(pedal.name)
     navigationItem.title = pedal.name
-//    view.backgroundColor = .red
-    
-    
-//    let screenHeight = view.frame.size.height
-//    let screenWidth = view.frame.size.width
-    //    if let tabBarHeight = tabBarController?.tabBar.frame.size.height {
-    ////      let tabBarBackground = UIView(frame: CGRect(x: 0, y: screenHeight - CGFloat(tabBarHeight), width: screenWidth, height: tabBarHeight))
-    //      let tabBarBackground = UIView()
-    //
-    //
-    ////      view.addSubview(tabBarBackground)
-    //      tabBarBackground.backgroundColor = .black
-    ////      if let tbbottomAnchor = tabBarController?.tabBar.bottomAnchor{
-    //      let tbOriginY = tabBarController?.tabBar.frame.origin.y
-    //      tabBarBackground.translatesAutoresizingMaskIntoConstraints = false
-    //      tabBarBackground.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-    //      tabBarBackground.heightAnchor.constraint(equalToConstant: tabBarHeight).isActive = true
-    //      tabBarBackground.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-    ////      tabBarBackground.bottomAnchor.constraint(equalTo: tabBarController?.tabBar.bottomAnchor!, constant: <#T##CGFloat#>)
-    ////      tabBarBackground.centerYAnchor.constraint(e).isActive = true
-    //      print("check")
-    //
-    //    }
-    
-    // Uncomment the following line to preserve selection between presentations
-    // self.clearsSelectionOnViewWillAppear = false
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem
   }
-  
-  // MARK: - Table view data source
-
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     // #warning Incomplete implementation, return the number of rows
@@ -57,14 +18,17 @@ class DetailTableViewController: UITableViewController {
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     var cell: UITableViewCell?
     
+    
+    
     if indexPath == IndexPath(row: 0, section: 0) {
       print("test image")
       tableView.register(PedalImageCell.self, forCellReuseIdentifier: "ImageCell")
       let cell = tableView.dequeueReusableCell(withIdentifier: "ImageCell", for: indexPath) as! PedalImageCell
       cell.pedal = pedal
+      cell.backgroundColor = UIColor.black
       knob1 = cell.knob1
       cell.updateImage()
-      cell.backgroundColor = .white
+//      cell.backgroundColor = .white
       cell.pedalCellImageView.image = pedal.image
       cell.selectionStyle = .none
       return cell
@@ -74,6 +38,7 @@ class DetailTableViewController: UITableViewController {
       print("test control")
       tableView.register(ControlTableViewCell.self, forCellReuseIdentifier: "ControlCell")
       let cell = tableView.dequeueReusableCell(withIdentifier: "ControlCell", for: indexPath) as! ControlTableViewCell
+      cell.backgroundColor = UIColor.black
       cell.pedal = pedal
       cell.delegate = self
       cell.addControls()
@@ -91,29 +56,9 @@ class DetailTableViewController: UITableViewController {
       }
       cell.selectionStyle = .none
       return cell
-      
     }
     
     return cell!
-//    else {
-//      tableView.register(PedalImageCell.self, forCellReuseIdentifier: "ControlCell")
-//
-//      let cell = tableView.dequeueReusableCell(withIdentifier: "ControlCell", for: indexPath) as! ControlTableViewCell {
-//      cell.backgroundColor = .black
-////      cell.pedalCellImageView.image = pedal.image
-//      return cell
-//    }
-    
-    
-//    if indexPath == IndexPath(row: 0, section: 0) {
-//      let pedalImageCell = tableView.dequeueReusableCell(withIdentifier: "ImageCell", for: indexPath)
-//      print("first cell")
-//      return pedalImageCell
-//    } else {
-//      let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-//      return cell
-//    }
-    
   }
   
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -134,8 +79,9 @@ class DetailTableViewController: UITableViewController {
       case 0:
         print("Count To 5")
         return 220
-//      case 1:
-//        print("Too Positive")
+      case 1:
+        print("Too Positive")
+        return 125
 //      case 2:
 //        print("PURPLL")
       case 3:
@@ -147,14 +93,6 @@ class DetailTableViewController: UITableViewController {
       }
     }
   }
-  
-//  func requestImageAngleUpdate(_ cell: ControlTableViewCell) {
-//    print("requested changes in TableVC")
-//    guard let indexPath = tableView.indexPath(for: cell) else {
-//      return
-//    }
-//  }
-  
 }
 
 extension DetailTableViewController: ControlTableViewCellDelegate {

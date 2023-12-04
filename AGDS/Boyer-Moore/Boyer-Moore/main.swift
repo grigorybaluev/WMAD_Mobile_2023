@@ -58,8 +58,6 @@ extension String {
   }
 }
 
-let sourceString = "Hello World!"
-let pattern = "World"
+var sourceString = "Hello World!"
+var pattern = "World"
 print(sourceString.distance(from: sourceString.startIndex, to: sourceString.index(of: pattern)!))
-
-

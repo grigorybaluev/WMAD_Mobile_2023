@@ -17,19 +17,8 @@ class ControlTableViewCell: UITableViewCell, ControlTableViewCellDelegate {
   var controlCell: ControlTableViewCell?
   weak var delegate: ControlTableViewCellDelegate?
   
-//  let knobImage = UIImageView(image: UIImage(named: "YourAndYou're_knob_outline.png"))
-  
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
-    
-    
-    
-//    contentView.addSubview(knobImage)
-//    knobImage.translatesAutoresizingMaskIntoConstraints = false
-//    knobImage.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: -42).isActive = true
-//    knobImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-//    knobImage.heightAnchor.constraint(equalToConstant: 80).isActive = true
-//    knobImage.widthAnchor.constraint(equalToConstant: 80).isActive = true
   }
   
   required init?(coder: NSCoder) {
@@ -182,6 +171,91 @@ class ControlTableViewCell: UITableViewCell, ControlTableViewCellDelegate {
       
     case 1:
       print("Too Positive")
+      
+      let volLabel = UILabel()
+      volLabel.text = "VOL"
+      volLabel.translatesAutoresizingMaskIntoConstraints = false
+      volLabel.font = UIFont(name: "Helvetica Neue Bold", size: 20)
+      
+      let volSlider = UISlider()
+      volSlider.translatesAutoresizingMaskIntoConstraints = false
+      volSlider.minimumValue = Float.pi * (-0.9)
+      volSlider.maximumValue = Float.pi * 0.9
+      volSlider.setValue(0, animated: false)
+      volSlider.addTarget(self, action: #selector(YourVolSliderValueChanged(_:)), for: .valueChanged)
+      slider1 = volSlider
+      
+      let toneLabel = UILabel()
+      toneLabel.text = "TONE"
+      toneLabel.translatesAutoresizingMaskIntoConstraints = false
+      toneLabel.font = UIFont(name: "Helvetica Neue Bold", size: 20)
+      
+      let toneSlider = UISlider()
+      toneSlider.translatesAutoresizingMaskIntoConstraints = false
+      toneSlider.minimumValue = Float.pi * (-0.9)
+      toneSlider.maximumValue = Float.pi * 0.9
+      toneSlider.setValue(0, animated: false)
+      toneSlider.addTarget(self, action: #selector(YourToneSliderValueChanged(_:)), for: .valueChanged)
+      
+      let onOffLabel = UILabel()
+      onOffLabel.text = "ON/OFF"
+      onOffLabel.translatesAutoresizingMaskIntoConstraints = false
+      onOffLabel.font = UIFont(name: "Helvetica Neue Bold", size: 20)
+      
+      lazy var onOffSwitch: UISwitch = {
+        let onOffSwitch = UISwitch()
+        onOffSwitch.isOn = false
+        onOffSwitch.translatesAutoresizingMaskIntoConstraints = false
+        onOffSwitch.addTarget(self, action: #selector(onOffSwitchValueChanged(_:)), for: .valueChanged)
+        return onOffSwitch
+      }()
+      
+      let horStackView1 = UIStackView()
+      horStackView1.axis = .horizontal
+      horStackView1.addArrangedSubview(volLabel)
+      horStackView1.addArrangedSubview(volSlider)
+      horStackView1.translatesAutoresizingMaskIntoConstraints = false
+      horStackView1.alignment = .fill
+      horStackView1.distribution = .fill
+      horStackView1.spacing = 25
+      
+      let horStackView2 = UIStackView()
+      horStackView2.axis = .horizontal
+      horStackView2.addArrangedSubview(toneLabel)
+      horStackView2.addArrangedSubview(toneSlider)
+      horStackView2.translatesAutoresizingMaskIntoConstraints = false
+      horStackView2.alignment = .fill
+      horStackView2.distribution = .fill
+      horStackView2.spacing = 25
+      
+      let horStackView3 = UIStackView()
+      horStackView3.axis = .horizontal
+      horStackView3.addArrangedSubview(onOffLabel)
+      horStackView3.addArrangedSubview(onOffSwitch)
+      horStackView3.translatesAutoresizingMaskIntoConstraints = false
+      horStackView3.alignment = .fill
+      horStackView3.distribution = .fill
+      horStackView3.spacing = 25
+      
+      let vertStackView = UIStackView()
+      vertStackView.axis = .vertical
+      vertStackView.addArrangedSubview(horStackView1)
+      vertStackView.addArrangedSubview(horStackView2)
+      vertStackView.addArrangedSubview(horStackView3)
+      contentView.addSubview(vertStackView)
+      vertStackView.translatesAutoresizingMaskIntoConstraints = false
+      vertStackView.alignment = .fill
+      vertStackView.distribution = .fillEqually
+      
+      let labelWidth = CGFloat(85)
+      volLabel.widthAnchor.constraint(equalToConstant: labelWidth).isActive = true
+      toneLabel.widthAnchor.constraint(equalToConstant: labelWidth).isActive = true
+      onOffLabel.widthAnchor.constraint(equalToConstant: labelWidth).isActive = true
+      
+      vertStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
+      vertStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
+      vertStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
+      vertStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
       
     case 2:
       print("PURPLL")

@@ -10,14 +10,22 @@ import UIKit
 class PedalTableViewController: UITableViewController {
 
   let pedals: [Pedal] = [
-    Pedal(name: "Count To 5", id: 0, detailText: "Sampler", image: UIImage(named: "CountTo5_edit.png")!, color: UIColor(red: 120.0 / 255.0, green: 140.0 / 255.0, blue: 240.0 / 255.0, alpha: 1.0)),
-    Pedal(name: "Too Positive", id: 1, detailText: "Detail", image: UIImage(named: "TooPositive_edit.png")!, color: UIColor(red: 234.0 / 255.0, green: 180.0 / 255.0, blue: 199.0 / 255.0, alpha: 1.0)),
-    Pedal(name: "PURPLL", id: 2, detailText: "Synth", image: UIImage(named: "PURPLL_edit.png")!, color: UIColor(red: 240.0 / 255.0, green: 240.0 / 255.0, blue: 245.0 / 255.0, alpha: 1.0)),
-    Pedal(name: "Your and You're", id: 3, detailText: "Delay", image: UIImage(named: "YourAndYou're_edit1.png")!, color: UIColor(red: 185.0 / 255.0, green: 205.0 / 255.0, blue: 180.0 / 255.0, alpha: 1.0)),
+    Pedal(name: "Count To 5", id: 0, detailText: "Sampler", image: UIImage(named: "CountTo5_edit.png")!,
+          color: UIColor(red: 60.0 / 255.0, green: 70.0 / 255.0, blue: 120.0 / 255.0, alpha: 1.0),
+          textColor: UIColor(red: 145.0 / 255.0, green: 160.0 / 255.0, blue: 255.0 / 255.0, alpha: 1.0)),
+    Pedal(name: "Too Positive", id: 1, detailText: "Detail", image: UIImage(named: "TooPositive_edit.png")!, color: UIColor(red: 125.0 / 255.0, green: 90.0 / 255.0, blue: 100.0 / 255.0, alpha: 1.0),
+          textColor: UIColor(red: 250.0 / 255.0, green: 180.0 / 255.0, blue: 200.0 / 255.0, alpha: 1.0)),
+    Pedal(name: "PURPLL", id: 2, detailText: "Synth", image: UIImage(named: "PURPLL_edit.png")!, color: UIColor(red: 80.0 / 255.0, green: 80.0 / 255.0, blue: 80.0 / 255.0, alpha: 1.0),
+          textColor: UIColor(red: 240.0 / 255.0, green: 240.0 / 255.0, blue: 245.0 / 255.0, alpha: 1.0)),
+    Pedal(name: "Your and You're", id: 3, detailText: "Delay", image: UIImage(named: "YourAndYou're_edit1.png")!, color: UIColor(red: 92.0 / 255.0, green: 102.0 / 255.0, blue: 90 / 255.0, alpha: 1.0),
+          textColor: UIColor(red: 185.0 / 255.0, green: 205.0 / 255.0, blue: 180.0 / 255.0, alpha: 1.0)),
   ]
+  
+//  UIColor(red: 185.0 / 255.0, green: 205.0 / 255.0, blue: 180.0 / 255.0, alpha: 1.0) your and you're text color original
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
   }
   
   // MARK: - Table view data source
@@ -29,7 +37,9 @@ class PedalTableViewController: UITableViewController {
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "PedalCell", for: indexPath) as! PedalTableViewCell
     cell.selectionStyle = .none
+    cell.backgroundColor = UIColor.black
     let pedal = pedals[indexPath.row]
+    navigationController?.navigationBar.tintColor = UIColor.darkGray
     cell.pedalImageView.image = pedal.image
     cell.pedalImageView.layer.cornerRadius = 20
     cell.pedalImageView.layer.masksToBounds = true
@@ -50,11 +60,11 @@ class PedalTableViewController: UITableViewController {
     background.bottomAnchor.constraint(equalTo: titleLabel.bottomAnchor).isActive = true
     background.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor, constant: -7).isActive = true
     background.backgroundColor = pedal.color
+    titleLabel.textColor = pedal.textColor
     
     switch pedal.id {
     case 0:
       print("Count To 5")
-      
       titleLabel.trailingAnchor.constraint(equalTo: cell.centerXAnchor).isActive = true
       titleLabel.topAnchor.constraint(equalTo: cell.topAnchor, constant: 45).isActive = true
     case 1:
