@@ -19,6 +19,15 @@ class PedalTableViewController: UITableViewController {
           textColor: UIColor(red: 240.0 / 255.0, green: 240.0 / 255.0, blue: 245.0 / 255.0, alpha: 1.0)),
     Pedal(name: "Your and You're", id: 3, detailText: "Delay", image: UIImage(named: "YourAndYou're_edit1.png")!, color: UIColor(red: 92.0 / 255.0, green: 102.0 / 255.0, blue: 90 / 255.0, alpha: 1.0),
           textColor: UIColor(red: 185.0 / 255.0, green: 205.0 / 255.0, blue: 180.0 / 255.0, alpha: 1.0)),
+    Pedal(name: "UPPERS", id: 4, detailText: "Sampler", image: UIImage(named: "UPPERS_edit.png")!,
+          color: UIColor(red: 80.0 / 255.0, green: 80.0 / 255.0, blue: 80.0 / 255.0, alpha: 1.0),
+                textColor: UIColor(red: 240.0 / 255.0, green: 240.0 / 255.0, blue: 245.0 / 255.0, alpha: 1.0)),
+    Pedal(name: "Positive_Overdrive", id: 5, detailText: "Detail", image: UIImage(named: "Positive_Overdrive_edit.png")!, color: UIColor(red: 50.0 / 255.0, green: 50.0 / 255.0, blue: 50.0 / 255.0, alpha: 1.0),
+          textColor: UIColor(red: 110.0 / 255.0, green: 175.0 / 255.0, blue: 255.0 / 255.0, alpha: 1.0)),
+    Pedal(name: "Ça_pis_Sa", id: 6, detailText: "Synth", image: UIImage(named: "Ça_pis_Sa_edit.png")!, color: UIColor(red: 240.0 / 255.0, green: 240.0 / 255.0, blue: 245.0 / 255.0, alpha: 1.0),
+          textColor: UIColor(red: 0.0 / 255.0, green: 0.0 / 255.0, blue: 0.0 / 255.0, alpha: 1.0)),
+//    Pedal(name: "856_for_ZELLERSASN", id: 3, detailText: "Delay", image: UIImage(named: "856_for_ZELLERSASN_edit.png")!, color: UIColor(red: 92.0 / 255.0, green: 102.0 / 255.0, blue: 90 / 255.0, alpha: 1.0),
+//          textColor: UIColor(red: 185.0 / 255.0, green: 205.0 / 255.0, blue: 180.0 / 255.0, alpha: 1.0)),
   ]
   
 //  UIColor(red: 185.0 / 255.0, green: 205.0 / 255.0, blue: 180.0 / 255.0, alpha: 1.0) your and you're text color original
@@ -64,7 +73,7 @@ class PedalTableViewController: UITableViewController {
     
     switch pedal.id {
     case 0:
-      print("Count To 5")
+      print("Count To 5 check")
       titleLabel.trailingAnchor.constraint(equalTo: cell.centerXAnchor).isActive = true
       titleLabel.topAnchor.constraint(equalTo: cell.topAnchor, constant: 45).isActive = true
     case 1:
@@ -82,6 +91,20 @@ class PedalTableViewController: UITableViewController {
       titleLabel.trailingAnchor.constraint(equalTo: cell.centerXAnchor, constant: 80).isActive = true
       titleLabel.topAnchor.constraint(equalTo: cell.topAnchor, constant: 20).isActive = true
       
+    case 4:
+      print("UPPERS")
+      titleLabel.trailingAnchor.constraint(equalTo: cell.centerXAnchor, constant: -10).isActive = true
+      titleLabel.topAnchor.constraint(equalTo: cell.topAnchor, constant: 25).isActive = true
+    case 5:
+      print("Positive Overdrive")
+      titleLabel.trailingAnchor.constraint(equalTo: cell.centerXAnchor, constant: 70).isActive = true
+      titleLabel.topAnchor.constraint(equalTo: cell.topAnchor, constant: 25).isActive = true
+    case 6:
+      print("Ça pis Sa")
+      titleLabel.trailingAnchor.constraint(equalTo: cell.centerXAnchor, constant: 40).isActive = true
+      titleLabel.topAnchor.constraint(equalTo: cell.topAnchor, constant: 25).isActive = true
+//    case 7:
+//      print("856 for ZELLERSASN")
     default:
       print("no pedal")
     }
