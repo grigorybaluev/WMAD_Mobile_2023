@@ -43,12 +43,13 @@ class PedalTableViewController: UITableViewController {
     return pedals.count
   }
   
+  
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "PedalCell", for: indexPath) as! PedalTableViewCell
     cell.selectionStyle = .none
     cell.backgroundColor = UIColor.black
     let pedal = pedals[indexPath.row]
-    navigationController?.navigationBar.tintColor = UIColor.darkGray
+    navigationController?.navigationBar.tintColor = UIColor.lightGray
     cell.pedalImageView.image = pedal.image
     cell.pedalImageView.layer.cornerRadius = 20
     cell.pedalImageView.layer.masksToBounds = true

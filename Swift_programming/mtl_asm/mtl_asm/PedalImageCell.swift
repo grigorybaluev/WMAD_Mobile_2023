@@ -182,14 +182,188 @@ class PedalImageCell: UITableViewCell {
       onOffLight.widthAnchor.constraint(equalToConstant: 18).isActive = true
       onOffLight1 = onOffLight
       
+    case 4:
+      print("UPPERS")
+      NSLayoutConstraint.activate([
+        pedalCellImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+        pedalCellImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+        pedalCellImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+        pedalCellImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
+      ])
       
+      let knobImage1 = UIImageView(image: UIImage(named: "UPPERS_knob.png"))
+      let knobImage2 = UIImageView(image: UIImage(named: "UPPERS_knob.png"))
+      let knobImage3 = UIImageView(image: UIImage(named: "UPPERS_knob.png"))
+      let knobImage4 = UIImageView(image: UIImage(named: "UPPERS_knob.png"))
+      knob1 = knobImage1
+      knob2 = knobImage2
+      knob3 = knobImage3
+      knob4 = knobImage4
+      let knobImages = [knobImage1, knobImage2]
+      let knobImages2 = [knobImage3, knobImage4]
+      for (index, knobImage) in knobImages.enumerated() {
+        contentView.addSubview(knobImage)
+        knobImage.translatesAutoresizingMaskIntoConstraints = false
+        
+        knobImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: CGFloat(-85)).isActive = true
+        knobImage.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: CGFloat(44 + 90*index)).isActive = true
+        knobImage.heightAnchor.constraint(equalToConstant: 73).isActive = true
+        knobImage.widthAnchor.constraint(equalToConstant: 73).isActive = true
+      }
+      for (index, knobImage) in knobImages2.enumerated() {
+        contentView.addSubview(knobImage)
+        knobImage.translatesAutoresizingMaskIntoConstraints = false
+        
+        knobImage.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: CGFloat(-140 + 90*index)).isActive = true
+        knobImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: -10).isActive = true
+        knobImage.heightAnchor.constraint(equalToConstant: 73).isActive = true
+        knobImage.widthAnchor.constraint(equalToConstant: 73).isActive = true
+      }
       
+      let onOffLight = UIView()
+      onOffLight.translatesAutoresizingMaskIntoConstraints = false
+      contentView.addSubview(onOffLight)
+      onOffLight.backgroundColor = .red
+      onOffLight.alpha = 0.0
+      onOffLight.layer.cornerRadius = 9
+      onOffLight.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: 135).isActive = true
+      onOffLight.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: 103).isActive = true
+      onOffLight.heightAnchor.constraint(equalToConstant: 18).isActive = true
+      onOffLight.widthAnchor.constraint(equalToConstant: 18).isActive = true
+      onOffLight1 = onOffLight
+
+    case 5:
+      print("Positive Overdrive")
+      NSLayoutConstraint.activate([
+        pedalCellImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+        pedalCellImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+        pedalCellImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+        pedalCellImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
+      ])
+      
+      let knobImage1 = UIImageView(image: UIImage(named: "YourAndYou're_knob_outline.png"))
+      let knobImage2 = UIImageView(image: UIImage(named: "YourAndYou're_knob_outline.png"))
+      let knobImage3 = UIImageView(image: UIImage(named: "YourAndYou're_knob_outline.png"))
+      let knobImage4 = UIImageView(image: UIImage(named: "YourAndYou're_knob_outline.png"))
+      knob1 = knobImage1
+      knob2 = knobImage2
+      knob3 = knobImage3
+      knob4 = knobImage4
+      let knobImages = [knobImage1, knobImage2]
+      let knobImages2 = [knobImage3, knobImage4]
+      for (index, knobImage) in knobImages.enumerated() {
+        contentView.addSubview(knobImage)
+        knobImage.translatesAutoresizingMaskIntoConstraints = false
+        let yStep = 110
+//        print(CGFloat(-5 + yStep*index))
+        
+        knobImage.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: 44).isActive = true
+//        knobImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: -45).isActive = true
+        knobImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: CGFloat(-100 + yStep*index)).isActive = true
+        knobImage.heightAnchor.constraint(equalToConstant: 73).isActive = true
+        knobImage.widthAnchor.constraint(equalToConstant: 73).isActive = true
+      }
+      for (index, knobImage) in knobImages2.enumerated() {
+        contentView.addSubview(knobImage)
+        knobImage.translatesAutoresizingMaskIntoConstraints = false
+        let yStep = 110
+//        print(CGFloat(-5 + yStep*index))
+        
+        knobImage.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: -140).isActive = true
+//        knobImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: -45).isActive = true
+        knobImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: CGFloat(-100 + yStep*index)).isActive = true
+        knobImage.heightAnchor.constraint(equalToConstant: 73).isActive = true
+        knobImage.widthAnchor.constraint(equalToConstant: 73).isActive = true
+      }
+      
+      let onOffLight = UIView()
+      onOffLight.translatesAutoresizingMaskIntoConstraints = false
+      contentView.addSubview(onOffLight)
+      onOffLight.backgroundColor = .red
+      onOffLight.alpha = 0.0
+      onOffLight.layer.cornerRadius = 9
+      onOffLight.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: 135).isActive = true
+      onOffLight.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: 103).isActive = true
+      onOffLight.heightAnchor.constraint(equalToConstant: 18).isActive = true
+      onOffLight.widthAnchor.constraint(equalToConstant: 18).isActive = true
+      onOffLight1 = onOffLight
+
+    case 6:
+      print("Ça pis Sa")
+      
+      NSLayoutConstraint.activate([
+        pedalCellImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+        pedalCellImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+        pedalCellImageView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.75),
+        pedalCellImageView.heightAnchor.constraint(equalToConstant: 540)
+      ])
+      
+      let knobImage1 = UIImageView(image: UIImage(named: "UPPERS_knob.png"))
+      let knobImage2 = UIImageView(image: UIImage(named: "UPPERS_knob.png"))
+      knob1 = knobImage1
+      knob2 = knobImage2
+      let knobImages = [knobImage1, knobImage2]
+      for (index, knobImage) in knobImages.enumerated() {
+        contentView.addSubview(knobImage)
+        knobImage.translatesAutoresizingMaskIntoConstraints = false
+        let yStep = 188
+//        print(CGFloat(-5 + yStep*index))
+        
+        knobImage.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: -42).isActive = true
+//        knobImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: -45).isActive = true
+        knobImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: CGFloat(-168 + yStep*index)).isActive = true
+        knobImage.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        knobImage.widthAnchor.constraint(equalToConstant: 80).isActive = true
+      }
+      
+      let onOffLight = UIView()
+      onOffLight.translatesAutoresizingMaskIntoConstraints = false
+      contentView.addSubview(onOffLight)
+      onOffLight.backgroundColor = .red
+      onOffLight.alpha = 0.0
+//      onOffLight.
+      onOffLight.layer.cornerRadius = 9
+      onOffLight.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: -41).isActive = true
+      onOffLight.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: -68).isActive = true
+      onOffLight.heightAnchor.constraint(equalToConstant: 18).isActive = true
+      onOffLight.widthAnchor.constraint(equalToConstant: 18).isActive = true
+      onOffLight1 = onOffLight
+      
+//      guard let gr = UITapGestureRecognizer(coder: NSCoder()) else { return }
+//      tapPiece(gr)
+      
+      let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+
+      // Add the gesture recognizer to the view
+      pedalCellImageView.addGestureRecognizer(tapGesture)
       
     default:
       print("no pedal")
     }
   }
-//  pedalCellImageView.translatesAutoresizingMaskIntoConstraints = false
+  
+  @objc func handleTap(_ gesture: UITapGestureRecognizer) {
+    // Handle the tap gesture here
+    print("Tap gesture detected!")
+    
+    // You can access additional information, such as the tap location
+    let tapLocation = gesture.location(in: pedalCellImageView)
+    print("Tap location: \(tapLocation)")
+  }
+  
+  @IBAction func tapPiece(_ gestureRecognizer : UITapGestureRecognizer ) {
+    print("tap Piece")
+    guard gestureRecognizer.view != nil else { return }
+    
+    if gestureRecognizer.state == .ended {      // Move the view down and to the right when tapped.
+      let animator = UIViewPropertyAnimator(duration: 0.2, curve: .easeInOut, animations: {
+        gestureRecognizer.view!.center.x += 100
+        gestureRecognizer.view!.center.y += 100
+      })
+      animator.startAnimation()
+    }
+  }
+  //  pedalCellImageView.translatesAutoresizingMaskIntoConstraints = false
 //  view.addSubview(pedalCellImageView)
 //  pedalCellImageView.
   

@@ -4,10 +4,23 @@ class DetailTableViewController: UITableViewController {
   var pedal: Pedal!
   var knob1: UIImageView!
   
+  var parameter: CGFloat = 0.0
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     print(pedal.name)
     navigationItem.title = pedal.name
+    
+    
+  }
+  
+  @objc func handleTap(_ gesture: UITapGestureRecognizer) {
+      // Handle the tap gesture here
+      print("Tap gesture detected!")
+
+      // You can access additional information, such as the tap location
+      let tapLocation = gesture.location(in: view)
+      print("Tap location: \(tapLocation)")
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -68,7 +81,7 @@ class DetailTableViewController: UITableViewController {
       let imgAspectRatio = imgWidth / imgHeight
       
       switch pedal.id {
-      case 0, 3:
+      case 0, 3, 6:
         print("Count To 5")
         return 556
       default:
@@ -87,6 +100,15 @@ class DetailTableViewController: UITableViewController {
       case 3:
         print("Your and You're")
         return 125
+      case 4:
+        print("UPPERS")
+        return 220
+      case 5:
+        print("Positive Overdrive")
+        return 125
+      case 6:
+        print("Ça pis Sa")
+        return 220
       default:
         print("no pedal")
         return 60
