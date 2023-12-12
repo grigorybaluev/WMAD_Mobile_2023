@@ -16,14 +16,99 @@ class PedalImageCell: UITableViewCell {
   var knob3 = UIImageView()
   var knob4 = UIImageView()
   var onOffLight1 = UIView()
+  var initialRotation = 0.0
   
   
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
+//    commonInit()
   }
   
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+    commonInit()
+  }
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    addPanGestureRecognizer()
+    print("awakeFromNib!!!!!!!!!!")
+  }
+  
+  private func commonInit() {
+    // Initialize and configure subviews, add gesture recognizer, etc.
+    addPanGestureRecognizer()
+    print("commonInit()")
+  }
+  
+  func addPanGestureRecognizer() {
+    let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
+//    knob1.addGestureRecognizer(panGesture)
+    self.contentView.addGestureRecognizer(panGesture)
+//    knob1.addGestureRecognizer(panGesture)
+    print("addPanGestureRecognizer()")
+  }
+  
+  @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
+    print("handlePan")
+//    let translation = gesture.translation(in: knob1)
+//    let translation = gesture.translation(in: pedalCellImageView)
+    let translation = gesture.translation(in: self.contentView)
+//    let translation = gesture.translation(in: superview)
+//    let translation = gesture.translation(in: nil)
+    
+    // Check if the gesture's location is within the desired range
+//    let location = gesture.location(in: nil)
+//    let minX: CGFloat = 0
+//    let maxX: CGFloat = 200
+//    let minY: CGFloat = 0
+//    let maxY: CGFloat = 200
+//
+//    if location.x >= minX && location.x <= maxX && location.y >= minY && location.y <= maxY {
+//      // Perform actions based on the translation within the restricted area
+//      // For example, update constraints, change alpha, etc.
+//      // You can also pass the translation or other information to another method
+//
+//      let angularDisplacement = sqrt(pow(translation.x, 2) + pow(translation.y, 2)) / 1000
+//      var delta = 0.0
+//
+//      if translation.y < 0 {
+//        delta = initialRotation - angularDisplacement
+//      }
+//      else if translation.y > 0 {
+//        delta = initialRotation + angularDisplacement
+//      }
+//      knob1.transform = CGAffineTransform(rotationAngle: CGFloat(delta))
+//      initialRotation = CGFloat(delta)
+//      let rotationMax = 2.4
+//      if initialRotation < -rotationMax {
+//        initialRotation = -rotationMax
+//      } else if initialRotation > rotationMax {
+//        initialRotation = rotationMax
+//      }
+//
+//      // Reset the translation to avoid cumulative changes
+//      gesture.setTranslation(.zero, in: knob1)
+//    }
+    
+    
+    let angularDisplacement = sqrt(pow(translation.x, 2) + pow(translation.y, 2)) / 1000
+    var delta = 0.0
+
+    if translation.y < 0 {
+      delta = initialRotation - angularDisplacement
+    }
+    else if translation.y > 0 {
+      delta = initialRotation + angularDisplacement
+    }
+    knob1.transform = CGAffineTransform(rotationAngle: CGFloat(delta))
+    initialRotation = CGFloat(delta)
+    let rotationMax = 2.4
+    if initialRotation < -rotationMax {
+      initialRotation = -rotationMax
+    } else if initialRotation > rotationMax {
+      initialRotation = rotationMax
+    }
   }
   
   func updateImage() {
@@ -35,14 +120,14 @@ class PedalImageCell: UITableViewCell {
     switch pedal.id {
     case 0:
       print("Count To 5")
-      
+
       NSLayoutConstraint.activate([
         pedalCellImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
         pedalCellImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
         pedalCellImageView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.75),
         pedalCellImageView.heightAnchor.constraint(equalToConstant: 540)
       ])
-      
+
       let knobImage1 = UIImageView(image: UIImage(named: "CountTo5Knob.png"))
       let knobImage2 = UIImageView(image: UIImage(named: "CountTo5Knob.png"))
       let knobImage3 = UIImageView(image: UIImage(named: "CountTo5Knob.png"))
@@ -57,14 +142,14 @@ class PedalImageCell: UITableViewCell {
         knobImage.translatesAutoresizingMaskIntoConstraints = false
         let yStep = 88
 //        print(CGFloat(-5 + yStep*index))
-        
+
         knobImage.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: -87).isActive = true
 //        knobImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: -45).isActive = true
         knobImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: CGFloat(-207 + yStep*index)).isActive = true
         knobImage.heightAnchor.constraint(equalToConstant: 63).isActive = true
         knobImage.widthAnchor.constraint(equalToConstant: 63).isActive = true
       }
-      
+
       let onOffLight = UIView()
       onOffLight.translatesAutoresizingMaskIntoConstraints = false
       contentView.addSubview(onOffLight)
@@ -77,6 +162,44 @@ class PedalImageCell: UITableViewCell {
       onOffLight.heightAnchor.constraint(equalToConstant: 22).isActive = true
       onOffLight.widthAnchor.constraint(equalToConstant: 22).isActive = true
       onOffLight1 = onOffLight
+//    case 0:
+//      print("Count To 5")
+//
+//      NSLayoutConstraint.activate([
+//        pedalCellImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+//        pedalCellImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+//        pedalCellImageView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.75),
+//        pedalCellImageView.heightAnchor.constraint(equalToConstant: 540)
+//      ])
+//
+//      let knobImage1 = UIImageView(image: UIImage(named: "CountTo5Knob.png"))
+//
+//      knob1 = knobImage1
+//
+//      contentView.addSubview(knobImage1)
+//      knobImage1.translatesAutoresizingMaskIntoConstraints = false
+//      let yStep = 88
+////        print(CGFloat(-5 + yStep*index))
+//
+//      knobImage1.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: -87).isActive = true
+////        knobImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: -45).isActive = true
+//      knobImage1.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: CGFloat(-207)).isActive = true
+//      knobImage1.heightAnchor.constraint(equalToConstant: 63).isActive = true
+//      knobImage1.widthAnchor.constraint(equalToConstant: 63).isActive = true
+      
+      
+//      let onOffLight = UIView()
+//      onOffLight.translatesAutoresizingMaskIntoConstraints = false
+//      contentView.addSubview(onOffLight)
+//      onOffLight.backgroundColor = .red
+//      onOffLight.alpha = 0.0
+////      onOffLight.
+//      onOffLight.layer.cornerRadius = 11
+//      onOffLight.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: 70).isActive = true
+//      onOffLight.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: 15).isActive = true
+//      onOffLight.heightAnchor.constraint(equalToConstant: 22).isActive = true
+//      onOffLight.widthAnchor.constraint(equalToConstant: 22).isActive = true
+//      onOffLight1 = onOffLight
       
     case 1:
       print("Too Positive")

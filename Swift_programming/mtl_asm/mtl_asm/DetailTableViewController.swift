@@ -2,26 +2,33 @@ import UIKit
 
 class DetailTableViewController: UITableViewController {
   var pedal: Pedal!
-  var knob1: UIImageView!
+  var knob1 = UIImageView()
+  var knob2 = UIImageView()
+  var knob3 = UIImageView()
+  var knob4 = UIImageView()
+//  var initialRotation: CGFloat = 0.0
+//  var panGesture = UIPanGestureRecognizer()
   
   var parameter: CGFloat = 0.0
+  
+//  override func viewDidLoad() {
+//    super.viewDidLoad()
+//    let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
+//    draggableView.addGestureRecognizer(panGesture)
+//  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
     print(pedal.name)
     navigationItem.title = pedal.name
-    
+    tableView.isScrollEnabled = false
+//    panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
+//    knob1.addGestureRecognizer(panGesture)
+//    print("panGesture added")
     
   }
   
-  @objc func handleTap(_ gesture: UITapGestureRecognizer) {
-      // Handle the tap gesture here
-      print("Tap gesture detected!")
-
-      // You can access additional information, such as the tap location
-      let tapLocation = gesture.location(in: view)
-      print("Tap location: \(tapLocation)")
-  }
+  
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     // #warning Incomplete implementation, return the number of rows
@@ -44,6 +51,19 @@ class DetailTableViewController: UITableViewController {
 //      cell.backgroundColor = .white
       cell.pedalCellImageView.image = pedal.image
       cell.selectionStyle = .none
+//      cell.knob1 = knob1
+//      cell.knob2 = knob2
+//      cell.knob3 = knob3
+//      cell.knob4 = knob4
+      knob1 = cell.knob1
+      knob3 = cell.knob3
+      knob4 = cell.knob4
+      knob2 = cell.knob2
+//      cell.commonInit()
+//      print("check commonInit()")
+      cell.awakeFromNib()
+//      knob1.addGestureRecognizer(panGesture)
+//      print("add pan gesture")
       return cell
       
     } else if indexPath == IndexPath(row: 1, section: 0) {
