@@ -115,8 +115,9 @@ class DetailTableViewController: UITableViewController {
       case 1:
         print("Too Positive")
         return 125
-//      case 2:
-//        print("PURPLL")
+      case 2:
+        print("PURPLL")
+        return 125
       case 3:
         print("Your and You're")
         return 125
@@ -128,7 +129,7 @@ class DetailTableViewController: UITableViewController {
         return 125
       case 6:
         print("Ça pis Sa")
-        return 220
+        return 125
       default:
         print("no pedal")
         return 60

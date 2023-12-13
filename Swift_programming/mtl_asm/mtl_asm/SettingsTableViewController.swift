@@ -10,7 +10,7 @@ import UIKit
 class SettingsTableViewController: UITableViewController {
   
   let sections = ["Input", "Output", "Presets"]
-  let cells = ["Input": ["Microphone", "Line In", "Audio 1", "Audio 2", "Audio 3"], "Presets": ["Preset 1", "Preset 2", "Preset 3"], "Output": ["Speaker", "Line Out", "AirPods Pro"]]
+  let cells = ["Input": ["Microphone", "Line In", "Audio 1", "Audio 2", "Audio 3"], "Presets": ["No Preset", "Preset 1", "Preset 2", "Preset 3"], "Output": ["Speaker", "Line Out", "AirPods Pro"]]
   var selectedCells: [Int: IndexPath] = [:]
   
   override func viewDidLoad() {
