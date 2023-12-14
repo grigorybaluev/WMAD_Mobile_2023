@@ -10,7 +10,14 @@ import OneFingerRotation
 import SwiftUI
 
 class PedalTableViewController: UITableViewController {
-
+  let logoImageView: UIImageView = {
+    let imageView = UIImageView(image: UIImage(named: "mtlasm_logo"))
+    imageView.contentMode = .scaleAspectFit
+    //    imageView.backgroundColor = .black
+    return imageView
+  }()
+  var horView = UIStackView()
+  
   let pedals: [Pedal] = [
     Pedal(name: "Count To 5", id: 0, detailText: "Sampler", image: UIImage(named: "CountTo5_edit.png")!,
           color: UIColor(red: 60.0 / 255.0, green: 70.0 / 255.0, blue: 120.0 / 255.0, alpha: 1.0),
@@ -23,21 +30,67 @@ class PedalTableViewController: UITableViewController {
           textColor: UIColor(red: 185.0 / 255.0, green: 205.0 / 255.0, blue: 180.0 / 255.0, alpha: 1.0)),
     Pedal(name: "UPPERS", id: 4, detailText: "Sampler", image: UIImage(named: "UPPERS_edit.png")!,
           color: UIColor(red: 80.0 / 255.0, green: 80.0 / 255.0, blue: 80.0 / 255.0, alpha: 1.0),
-                textColor: UIColor(red: 240.0 / 255.0, green: 240.0 / 255.0, blue: 245.0 / 255.0, alpha: 1.0)),
+          textColor: UIColor(red: 240.0 / 255.0, green: 240.0 / 255.0, blue: 245.0 / 255.0, alpha: 1.0)),
     Pedal(name: "Positive_Overdrive", id: 5, detailText: "Detail", image: UIImage(named: "Positive_Overdrive_edit.png")!, color: UIColor(red: 50.0 / 255.0, green: 50.0 / 255.0, blue: 50.0 / 255.0, alpha: 1.0),
           textColor: UIColor(red: 110.0 / 255.0, green: 175.0 / 255.0, blue: 255.0 / 255.0, alpha: 1.0)),
-    Pedal(name: "Ça_pis_Sa", id: 6, detailText: "Synth", image: UIImage(named: "Ça_pis_Sa_edit.png")!, color: UIColor(red: 240.0 / 255.0, green: 240.0 / 255.0, blue: 245.0 / 255.0, alpha: 1.0),
-          textColor: UIColor(red: 0.0 / 255.0, green: 0.0 / 255.0, blue: 0.0 / 255.0, alpha: 1.0)),
-//    Pedal(name: "856_for_ZELLERSASN", id: 3, detailText: "Delay", image: UIImage(named: "856_for_ZELLERSASN_edit.png")!, color: UIColor(red: 92.0 / 255.0, green: 102.0 / 255.0, blue: 90 / 255.0, alpha: 1.0),
-//          textColor: UIColor(red: 185.0 / 255.0, green: 205.0 / 255.0, blue: 180.0 / 255.0, alpha: 1.0)),
+    Pedal(name: "Ça_pis_Sa", id: 6, detailText: "Synth", image: UIImage(named: "Ça_pis_Sa_edit.png")!, color: UIColor(red: 220.0 / 255.0, green: 220.0 / 255.0, blue: 220.0 / 255.0, alpha: 1.0),
+          textColor: UIColor(red: 50.0 / 255.0, green: 50.0 / 255.0, blue: 50.0 / 255.0, alpha: 1.0)),
+    //    Pedal(name: "856_for_ZELLERSASN", id: 3, detailText: "Delay", image: UIImage(named: "856_for_ZELLERSASN_edit.png")!, color: UIColor(red: 92.0 / 255.0, green: 102.0 / 255.0, blue: 90 / 255.0, alpha: 1.0),
+    //          textColor: UIColor(red: 185.0 / 255.0, green: 205.0 / 255.0, blue: 180.0 / 255.0, alpha: 1.0)),
   ]
   
-//  UIColor(red: 185.0 / 255.0, green: 205.0 / 255.0, blue: 180.0 / 255.0, alpha: 1.0) your and you're text color original
+  //  UIColor(red: 185.0 / 255.0, green: 205.0 / 255.0, blue: 180.0 / 255.0, alpha: 1.0) your and you're text color original
   
   override func viewDidLoad() {
     super.viewDidLoad()
+//    let horView = UIStackView(frame: super.view.bounds)
+    super.view.addSubview(horView)
+    horView.backgroundColor = .black
+    // Add the logo image view to the view hierarchy
+
+    horView.addArrangedSubview(logoImageView)
+
     
+    horView.translatesAutoresizingMaskIntoConstraints = false
+    horView.alignment = .leading
+    horView.distribution = .fillEqually
+    horView.axis = .vertical
+    
+    
+
+    
+    
+//    logoBackgroundView.frame = view.bounds
+//    logoImageView.translatesAutoresizingMaskIntoConstraints = false
+//    logoBackgroundView.translatesAutoresizingMaskIntoConstraints = false
+//    logoBackgroundView.backgroundColor = .black
+//
+    // Center the logo image view
+    NSLayoutConstraint.activate([
+      logoImageView.centerXAnchor.constraint(equalTo: super.view.centerXAnchor),
+      logoImageView.centerYAnchor.constraint(equalTo: super.view.centerYAnchor),
+      logoImageView.widthAnchor.constraint(equalToConstant: 200), // Adjust width as needed
+      logoImageView.heightAnchor.constraint(equalToConstant: 200), // Adjust height as needed
+      horView.leadingAnchor.constraint(equalTo: super.view.leadingAnchor),
+      horView.trailingAnchor.constraint(equalTo: super.view.trailingAnchor),
+      horView.bottomAnchor.constraint(equalTo: super.view.bottomAnchor),
+      horView.topAnchor.constraint(equalTo: super.view.topAnchor) // Adjust height as needed
+    ])
+    
+    // Start the animation after the view has appeared
+    DispatchQueue.main.asyncAfter(deadline: .now() + 2) { // Change to 5 for a 5-second delay
+      self.animateLogoFadeOut()
+    }
   }
+  
+  func animateLogoFadeOut() {
+    UIView.animate(withDuration: 3.0, animations: {
+      self.logoImageView.alpha = 0.0
+      self.horView.alpha = 0.0
+      print("logo")
+    })
+  }
+  
   
   // MARK: - Table view data source
   
@@ -61,7 +114,7 @@ class PedalTableViewController: UITableViewController {
     titleLabel.translatesAutoresizingMaskIntoConstraints = false
     titleLabel.text = pedal.name
     titleLabel.font = UIFont(name: "Helvetica Neue Bold", size: 25)
-//    titleLabel.alpha = 0.8
+    //    titleLabel.alpha = 0.8
     let background = UIView()
     background.translatesAutoresizingMaskIntoConstraints = false
     cell.addSubview(background)
@@ -107,25 +160,25 @@ class PedalTableViewController: UITableViewController {
       print("Ça pis Sa")
       titleLabel.trailingAnchor.constraint(equalTo: cell.centerXAnchor, constant: 40).isActive = true
       titleLabel.topAnchor.constraint(equalTo: cell.topAnchor, constant: 25).isActive = true
-//    case 7:
-//      print("856 for ZELLERSASN")
+      //    case 7:
+      //      print("856 for ZELLERSASN")
     default:
       print("no pedal")
     }
     
     
-
+    
     return cell
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let pedal = pedals[indexPath.row]
-//    let detailTVC = DetailTableViewController()
-//    detailTVC.pedal = pedal
-//    navigationController?.pushViewController(detailTVC, animated: true)
+    //    let detailTVC = DetailTableViewController()
+    //    detailTVC.pedal = pedal
+    //    navigationController?.pushViewController(detailTVC, animated: true)
     let detailVC = DetailViewController()
     detailVC.pedal = pedal
     navigationController?.pushViewController(detailVC, animated: true)
   }
-
+  
 }

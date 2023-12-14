@@ -19,6 +19,8 @@
 		FA81FDC22B2AA9CD0080828C /* PedalImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA81FDC12B2AA9CD0080828C /* PedalImageView.swift */; };
 		FA81FDC42B2ABD0D0080828C /* ControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA81FDC32B2ABD0D0080828C /* ControlView.swift */; };
 		FA81FDC62B2B5F870080828C /* PedalInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA81FDC52B2B5F870080828C /* PedalInfoTableViewController.swift */; };
+		FA81FDC82B2B7E570080828C /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA81FDC72B2B7E570080828C /* StartViewController.swift */; };
+		FA81FDCA2B2B8C9C0080828C /* PresetsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA81FDC92B2B8C9C0080828C /* PresetsTableViewController.swift */; };
 		FAC5F7372A3A7BAC004253C3 /* ControlTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC5F7362A3A7BAC004253C3 /* ControlTableViewCell.swift */; };
 		FAC5F7392A424990004253C3 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC5F7382A424990004253C3 /* SettingsTableViewController.swift */; };
 		FACD72E12A326BB900D967F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACD72E02A326BB900D967F6 /* AppDelegate.swift */; };
@@ -41,6 +43,8 @@
 		FA81FDC12B2AA9CD0080828C /* PedalImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedalImageView.swift; sourceTree = "<group>"; };
 		FA81FDC32B2ABD0D0080828C /* ControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlView.swift; sourceTree = "<group>"; };
 		FA81FDC52B2B5F870080828C /* PedalInfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedalInfoTableViewController.swift; sourceTree = "<group>"; };
+		FA81FDC72B2B7E570080828C /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		FA81FDC92B2B8C9C0080828C /* PresetsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetsTableViewController.swift; sourceTree = "<group>"; };
 		FAC5F7362A3A7BAC004253C3 /* ControlTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlTableViewCell.swift; sourceTree = "<group>"; };
 		FAC5F7382A424990004253C3 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		FACD72DD2A326BB900D967F6 /* mtl_asm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mtl_asm.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,11 +103,13 @@
 				FA4364BF2A3A61D50028071C /* PedalImageCell.swift */,
 				FA2A821E2A38487B00013020 /* PedalTableViewCell.swift */,
 				FA2A82202A39194300013020 /* PedalTableViewController.swift */,
+				FA81FDC92B2B8C9C0080828C /* PresetsTableViewController.swift */,
 				FA134F5A2A37E31C00D56104 /* Pedal.swift */,
 				FACD72E92A326BBC00D967F6 /* Assets.xcassets */,
 				FACD72EB2A326BBC00D967F6 /* LaunchScreen.storyboard */,
 				FACD72EE2A326BBC00D967F6 /* Info.plist */,
 				FA81FDBF2B2AA8220080828C /* DetailViewController.swift */,
+				FA81FDC72B2B7E570080828C /* StartViewController.swift */,
 			);
 			path = mtl_asm;
 			sourceTree = "<group>";
@@ -187,6 +193,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA4364C02A3A61D50028071C /* PedalImageCell.swift in Sources */,
+				FA81FDC82B2B7E570080828C /* StartViewController.swift in Sources */,
+				FA81FDCA2B2B8C9C0080828C /* PresetsTableViewController.swift in Sources */,
 				FA81FDC22B2AA9CD0080828C /* PedalImageView.swift in Sources */,
 				FACD72E12A326BB900D967F6 /* AppDelegate.swift in Sources */,
 				FA4364BE2A3A58370028071C /* DetailTableViewController.swift in Sources */,

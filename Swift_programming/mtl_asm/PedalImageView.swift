@@ -84,7 +84,6 @@ class PedalImageView: UIView {
       ])
       
       let knobSize = CGFloat(80)
-      var knobs: [UIView] = []
       let yStep = 110
       let yOffset = -225
       for index in 0..<2 {
@@ -121,15 +120,15 @@ class PedalImageView: UIView {
       onOffLight.heightAnchor.constraint(equalToConstant: 18).isActive = true
       onOffLight.widthAnchor.constraint(equalToConstant: 18).isActive = true
       onOffLight1 = onOffLight
-      //    case 2:
-      //      print("PURPLL")
-      //
-      //      NSLayoutConstraint.activate([
-      //        pedalCellImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-      //        pedalCellImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-      //        pedalCellImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
-      //        pedalCellImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
-      //      ])
+    case 2:
+      print("PURPLL")
+      
+      NSLayoutConstraint.activate([
+        pedalImageView.topAnchor.constraint(equalTo: super.topAnchor, constant: 8),
+        pedalImageView.leadingAnchor.constraint(equalTo: super.leadingAnchor, constant: 8),
+        pedalImageView.trailingAnchor.constraint(equalTo: super.trailingAnchor, constant: -8),
+        pedalImageView.bottomAnchor.constraint(equalTo: super.bottomAnchor, constant: -430)
+      ])
     case 3:
       print("Your and You're")
       NSLayoutConstraint.activate([
@@ -140,7 +139,6 @@ class PedalImageView: UIView {
       ])
       
       let knobSize = CGFloat(85)
-      var knobs: [UIView] = []
       let yStep = 185
       let yOffset = -262
 
@@ -197,7 +195,6 @@ class PedalImageView: UIView {
       ])
       
       let knobSize = CGFloat(75)
-      var knobs: [UIView] = []
       let xStep = 90
 //      let yOffset = -207
       for index in 0..<2 {
@@ -297,7 +294,6 @@ class PedalImageView: UIView {
       ])
       
       let knobSize = CGFloat(80)
-      var knobs: [UIView] = []
       let yStep = 110
       let yOffset = -225
       for index in 0..<2 {
@@ -359,7 +355,6 @@ class PedalImageView: UIView {
       ])
       
       let knobSize = CGFloat(85)
-      var knobs: [UIView] = []
       let yStep = 185
       let yOffset = -262
 
@@ -451,6 +446,7 @@ class PedalImageView: UIView {
 struct KnobImageView: View {
   var imageName: String
   var size: CGFloat
+  @State var knobValue: Double = 0.5
   var body: some View {
     Image(imageName)
     //      .imageScale(.small)
@@ -460,7 +456,16 @@ struct KnobImageView: View {
     //      .simpleRotationInertia()
       .resizable()
       .frame(width: size, height: size)
-      .simpleRotation()
+      .knobRotation(
+          knobValue: $knobValue,
+          minAngle: -165,
+          maxAngle: +165,
+          onKnobValueChanged: { newValue in
+            knobValue = newValue
+          },
+          animation: .spring()
+        )
+//      .simpleRotation()
   }
   
   init(imageName: String, size: CGFloat) {
