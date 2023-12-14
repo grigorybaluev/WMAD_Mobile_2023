@@ -1,4 +1,6 @@
 import UIKit
+import OneFingerRotation
+import SwiftUI
 
 //class ControlTableViewCell: UITableViewCell {
 class ControlTableViewCell: UITableViewCell, ControlTableViewCellDelegate {

@@ -1,4 +1,6 @@
 import UIKit
+import OneFingerRotation
+import SwiftUI
 
 class DetailTableViewController: UITableViewController {
   var pedal: Pedal!
@@ -22,13 +24,29 @@ class DetailTableViewController: UITableViewController {
     print(pedal.name)
     navigationItem.title = pedal.name
     tableView.isScrollEnabled = false
+    
+    
+    let hostingController = UIHostingController(rootView: KnobImageView(imageName: "CountTo5Knob", size: 20))
+    addChild(hostingController)
+    super.view.addSubview(hostingController.view)
+    hostingController.didMove(toParent: self)
+    
+    hostingController.view.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      hostingController.view.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      hostingController.view.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+    ])
+    
 //    panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
 //    knob1.addGestureRecognizer(panGesture)
 //    print("panGesture added")
     
   }
   
-  
+  func applyImageViewModifications(_ imageView: UIImageView) {
+    // Modify the image view properties
+//    knob1.simpleRotation()
+  }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     // #warning Incomplete implementation, return the number of rows
@@ -46,7 +64,7 @@ class DetailTableViewController: UITableViewController {
       let cell = tableView.dequeueReusableCell(withIdentifier: "ImageCell", for: indexPath) as! PedalImageCell
       cell.pedal = pedal
       cell.backgroundColor = UIColor.black
-      knob1 = cell.knob1
+//      knob1 = cell.knob1
       cell.updateImage()
 //      cell.backgroundColor = .white
       cell.pedalCellImageView.image = pedal.image
@@ -59,11 +77,26 @@ class DetailTableViewController: UITableViewController {
       knob3 = cell.knob3
       knob4 = cell.knob4
       knob2 = cell.knob2
+      
+      let hostingController = UIHostingController(rootView: KnobImageView(imageName: "CountTo5Knob", size: 20))
+      addChild(hostingController)
+      cell.addSubview(hostingController.view)
+      hostingController.didMove(toParent: self)
+      
+      hostingController.view.translatesAutoresizingMaskIntoConstraints = false
+      NSLayoutConstraint.activate([
+        hostingController.view.centerXAnchor.constraint(equalTo: cell.trailingAnchor),
+        hostingController.view.centerYAnchor.constraint(equalTo: cell.centerYAnchor)
+      ])
+      
+//      OneFingerRotation.
 //      cell.commonInit()
 //      print("check commonInit()")
       cell.awakeFromNib()
 //      knob1.addGestureRecognizer(panGesture)
 //      print("add pan gesture")
+      
+      
       return cell
       
     } else if indexPath == IndexPath(row: 1, section: 0) {
@@ -99,6 +132,7 @@ class DetailTableViewController: UITableViewController {
       let imgWidth = pedal.image.size.width
       let imgHeight = pedal.image.size.height
       let imgAspectRatio = imgWidth / imgHeight
+//      view.safeAreaLayoutGuide.layoutFrame.size.width / imgAspectRatio
       
       switch pedal.id {
       case 0, 3, 6:

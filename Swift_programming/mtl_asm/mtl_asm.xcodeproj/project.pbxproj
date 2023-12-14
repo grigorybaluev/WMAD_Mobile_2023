@@ -14,6 +14,11 @@
 		FA4364BE2A3A58370028071C /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4364BD2A3A58370028071C /* DetailTableViewController.swift */; };
 		FA4364C02A3A61D50028071C /* PedalImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4364BF2A3A61D50028071C /* PedalImageCell.swift */; };
 		FA6DB3022A44F59700351D3A /* InfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6DB3012A44F59700351D3A /* InfoTableViewController.swift */; };
+		FA81FD7E2B293F900080828C /* OneFingerRotation in Frameworks */ = {isa = PBXBuildFile; productRef = FA81FD7D2B293F900080828C /* OneFingerRotation */; };
+		FA81FDC02B2AA8220080828C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA81FDBF2B2AA8220080828C /* DetailViewController.swift */; };
+		FA81FDC22B2AA9CD0080828C /* PedalImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA81FDC12B2AA9CD0080828C /* PedalImageView.swift */; };
+		FA81FDC42B2ABD0D0080828C /* ControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA81FDC32B2ABD0D0080828C /* ControlView.swift */; };
+		FA81FDC62B2B5F870080828C /* PedalInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA81FDC52B2B5F870080828C /* PedalInfoTableViewController.swift */; };
 		FAC5F7372A3A7BAC004253C3 /* ControlTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC5F7362A3A7BAC004253C3 /* ControlTableViewCell.swift */; };
 		FAC5F7392A424990004253C3 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC5F7382A424990004253C3 /* SettingsTableViewController.swift */; };
 		FACD72E12A326BB900D967F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACD72E02A326BB900D967F6 /* AppDelegate.swift */; };
@@ -32,6 +37,10 @@
 		FA4364BD2A3A58370028071C /* DetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
 		FA4364BF2A3A61D50028071C /* PedalImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedalImageCell.swift; sourceTree = "<group>"; };
 		FA6DB3012A44F59700351D3A /* InfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewController.swift; sourceTree = "<group>"; };
+		FA81FDBF2B2AA8220080828C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		FA81FDC12B2AA9CD0080828C /* PedalImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedalImageView.swift; sourceTree = "<group>"; };
+		FA81FDC32B2ABD0D0080828C /* ControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlView.swift; sourceTree = "<group>"; };
+		FA81FDC52B2B5F870080828C /* PedalInfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedalInfoTableViewController.swift; sourceTree = "<group>"; };
 		FAC5F7362A3A7BAC004253C3 /* ControlTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlTableViewCell.swift; sourceTree = "<group>"; };
 		FAC5F7382A424990004253C3 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		FACD72DD2A326BB900D967F6 /* mtl_asm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mtl_asm.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA81FD7E2B293F900080828C /* OneFingerRotation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +68,8 @@
 		FACD72D42A326BB900D967F6 = {
 			isa = PBXGroup;
 			children = (
+				FA81FDC32B2ABD0D0080828C /* ControlView.swift */,
+				FA81FDC12B2AA9CD0080828C /* PedalImageView.swift */,
 				FA134F5C2A37F18700D56104 /* data.json */,
 				FACD72DF2A326BB900D967F6 /* mtl_asm */,
 				FACD72DE2A326BB900D967F6 /* Products */,
@@ -82,6 +94,7 @@
 				FACD72E22A326BB900D967F6 /* SceneDelegate.swift */,
 				FACD72E62A326BB900D967F6 /* Main.storyboard */,
 				FA6DB3012A44F59700351D3A /* InfoTableViewController.swift */,
+				FA81FDC52B2B5F870080828C /* PedalInfoTableViewController.swift */,
 				FAC5F7382A424990004253C3 /* SettingsTableViewController.swift */,
 				FA4364BF2A3A61D50028071C /* PedalImageCell.swift */,
 				FA2A821E2A38487B00013020 /* PedalTableViewCell.swift */,
@@ -90,6 +103,7 @@
 				FACD72E92A326BBC00D967F6 /* Assets.xcassets */,
 				FACD72EB2A326BBC00D967F6 /* LaunchScreen.storyboard */,
 				FACD72EE2A326BBC00D967F6 /* Info.plist */,
+				FA81FDBF2B2AA8220080828C /* DetailViewController.swift */,
 			);
 			path = mtl_asm;
 			sourceTree = "<group>";
@@ -110,6 +124,9 @@
 			dependencies = (
 			);
 			name = mtl_asm;
+			packageProductDependencies = (
+				FA81FD7D2B293F900080828C /* OneFingerRotation */,
+			);
 			productName = mtl_asm;
 			productReference = FACD72DD2A326BB900D967F6 /* mtl_asm.app */;
 			productType = "com.apple.product-type.application";
@@ -138,6 +155,9 @@
 				Base,
 			);
 			mainGroup = FACD72D42A326BB900D967F6;
+			packageReferences = (
+				FA81FD7C2B293F900080828C /* XCRemoteSwiftPackageReference "OneFingerRotation" */,
+			);
 			productRefGroup = FACD72DE2A326BB900D967F6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -167,8 +187,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA4364C02A3A61D50028071C /* PedalImageCell.swift in Sources */,
+				FA81FDC22B2AA9CD0080828C /* PedalImageView.swift in Sources */,
 				FACD72E12A326BB900D967F6 /* AppDelegate.swift in Sources */,
 				FA4364BE2A3A58370028071C /* DetailTableViewController.swift in Sources */,
+				FA81FDC62B2B5F870080828C /* PedalInfoTableViewController.swift in Sources */,
+				FA81FDC02B2AA8220080828C /* DetailViewController.swift in Sources */,
 				FA2A82212A39194300013020 /* PedalTableViewController.swift in Sources */,
 				FAC5F7372A3A7BAC004253C3 /* ControlTableViewCell.swift in Sources */,
 				FACD72FB2A327E3B00D967F6 /* PedalViewController.swift in Sources */,
@@ -177,6 +200,7 @@
 				FA6DB3022A44F59700351D3A /* InfoTableViewController.swift in Sources */,
 				FA134F5B2A37E31C00D56104 /* Pedal.swift in Sources */,
 				FACD72E32A326BB900D967F6 /* SceneDelegate.swift in Sources */,
+				FA81FDC42B2ABD0D0080828C /* ControlView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,6 +420,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FA81FD7C2B293F900080828C /* XCRemoteSwiftPackageReference "OneFingerRotation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/matteofontana-app/OneFingerRotation.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FA81FD7D2B293F900080828C /* OneFingerRotation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA81FD7C2B293F900080828C /* XCRemoteSwiftPackageReference "OneFingerRotation" */;
+			productName = OneFingerRotation;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FACD72D52A326BB900D967F6 /* Project object */;
 }

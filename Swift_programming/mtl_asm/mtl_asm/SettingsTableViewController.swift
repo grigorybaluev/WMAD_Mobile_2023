@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import OneFingerRotation
+import SwiftUI
 
 class SettingsTableViewController: UITableViewController {
   
-  let sections = ["Input", "Output", "Presets"]
+  let sections = ["Input", "Output"]
   let cells = ["Input": ["Microphone", "Line In", "Audio 1", "Audio 2", "Audio 3"], "Presets": ["No Preset", "Preset 1", "Preset 2", "Preset 3"], "Output": ["Speaker", "Line Out", "AirPods Pro"]]
   var selectedCells: [Int: IndexPath] = [:]
   
@@ -80,7 +82,4 @@ class SettingsTableViewController: UITableViewController {
     
     tableView.deselectRow(at: indexPath, animated: true)
   }
-  
-  
-  
 }

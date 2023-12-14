@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import OneFingerRotation
+import SwiftUI
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {

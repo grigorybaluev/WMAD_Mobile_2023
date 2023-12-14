@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import OneFingerRotation
+import SwiftUI
 
 class PedalTableViewController: UITableViewController {
 
@@ -77,6 +79,7 @@ class PedalTableViewController: UITableViewController {
       print("Count To 5 check")
       titleLabel.trailingAnchor.constraint(equalTo: cell.centerXAnchor).isActive = true
       titleLabel.topAnchor.constraint(equalTo: cell.topAnchor, constant: 45).isActive = true
+      
     case 1:
       print("Too Positive")
       titleLabel.trailingAnchor.constraint(equalTo: cell.centerXAnchor, constant: 25).isActive = true
@@ -117,9 +120,12 @@ class PedalTableViewController: UITableViewController {
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let pedal = pedals[indexPath.row]
-    let detailTVC = DetailTableViewController()
-    detailTVC.pedal = pedal
-    navigationController?.pushViewController(detailTVC, animated: true)
+//    let detailTVC = DetailTableViewController()
+//    detailTVC.pedal = pedal
+//    navigationController?.pushViewController(detailTVC, animated: true)
+    let detailVC = DetailViewController()
+    detailVC.pedal = pedal
+    navigationController?.pushViewController(detailVC, animated: true)
   }
 
 }

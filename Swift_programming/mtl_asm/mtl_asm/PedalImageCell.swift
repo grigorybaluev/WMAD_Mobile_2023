@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import OneFingerRotation
+import SwiftUI
 
 class PedalImageCell: UITableViewCell {
 //  var pedalCellImageView = UIImageView()
@@ -21,7 +23,10 @@ class PedalImageCell: UITableViewCell {
   
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
-//    commonInit()
+    
+    
+    commonInit()
+    
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -31,13 +36,15 @@ class PedalImageCell: UITableViewCell {
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    addPanGestureRecognizer()
+//    addPanGestureRecognizer()
+    addRotationGestureRecognizer()
     print("awakeFromNib!!!!!!!!!!")
   }
   
   private func commonInit() {
     // Initialize and configure subviews, add gesture recognizer, etc.
-    addPanGestureRecognizer()
+//    addPanGestureRecognizer()
+    addRotationGestureRecognizer()
     print("commonInit()")
   }
   
@@ -46,7 +53,17 @@ class PedalImageCell: UITableViewCell {
 //    knob1.addGestureRecognizer(panGesture)
     self.contentView.addGestureRecognizer(panGesture)
 //    knob1.addGestureRecognizer(panGesture)
+    
     print("addPanGestureRecognizer()")
+  }
+  
+  func addRotationGestureRecognizer() {
+//    let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
+    let rotationGesture = UIRotationGestureRecognizer(target: self, action: #selector(handleRotation(_:)))
+//    knob1.addGestureRecognizer(panGesture)
+    knob1.addGestureRecognizer(rotationGesture)
+//    knob1.addGestureRecognizer(panGesture)
+    print("addRotationGestureRecognizer()")
   }
   
   @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
@@ -102,12 +119,33 @@ class PedalImageCell: UITableViewCell {
       delta = initialRotation + angularDisplacement
     }
     knob1.transform = CGAffineTransform(rotationAngle: CGFloat(delta))
+    
     initialRotation = CGFloat(delta)
     let rotationMax = 2.4
     if initialRotation < -rotationMax {
       initialRotation = -rotationMax
     } else if initialRotation > rotationMax {
       initialRotation = rotationMax
+    }
+  }
+  
+  @objc func handleRotation(_ gesture: UIRotationGestureRecognizer) {
+    print("handleRotation")
+    
+    if gesture.state == .began || gesture.state == .changed {
+      print("startstartstartstart")
+      // Relative offset from the start of the gesture
+//      let offset = gesture.
+//
+//      // Ignore moves to the left of the starting point
+//      let right = max(offset.x, 0)
+//
+//      // Only rotate up to 75 degrees - just an example
+//      let angleDeg = min(right / box.bounds.size.width * 90, 75)
+//
+//      // Create and set the rotation transform on the green box
+//      let rotate = CGAffineTransform(rotationAngle: angleDeg / 180 * .pi)
+//      box.transform = rotate
     }
   }
   
@@ -139,6 +177,7 @@ class PedalImageCell: UITableViewCell {
       let knobImages = [knobImage1, knobImage2, knobImage3, knobImage4]
       for (index, knobImage) in knobImages.enumerated() {
         contentView.addSubview(knobImage)
+        
         knobImage.translatesAutoresizingMaskIntoConstraints = false
         let yStep = 88
 //        print(CGFloat(-5 + yStep*index))
@@ -531,3 +570,19 @@ enum TargetKnob {
 enum SwitchTarget {
   case YourOnOffLight
 }
+
+//struct KnobImageView: View {
+//  var imageName: String
+//  var body: some View {
+//    Image(imageName)
+////      .imageScale(.large)
+////      .foregroundColor(.accentColor)
+////      .padding()
+////      .rotationEffect(Angle(degrees: 45.0))
+//      .simpleRotationInertia()
+//  }
+//  
+//  init(imageName: String) {
+//    self.imageName = imageName
+//  }
+//}
